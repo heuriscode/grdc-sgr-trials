@@ -355,12 +355,12 @@ project:
     source: "Several groups/programmes work on the same practices (BCG, Hart, MSF, SFS, other GRDC investments); NSW DPI ERR 19 credited 35% of conservation farming to DPI"
     status: judgement
   adoption_advance_years:
-    central: 3
-    low: 2
-    high: 5
+    central: 7
+    low: 5
+    high: 10
     unit: years earlier than without the project
-    source: "Marsh, Pannell & Lindner 2000 - extension moved adoption earlier but not the rate or ceiling (WA lupins)"
-    status: snippet
+    source: "Project lead ruling 25 Nov 2026 (5-10 years): a multi-site, multi-season systems trial is the main source of local evidence for these systems, so without it uptake would wait on growers' own trial and error. Mechanism (advance, not a higher ceiling): Marsh, Pannell & Lindner 2000 (WA lupins)"
+    status: judgement
   counterfactual_ceiling_share:
     central: 1.0
     low: 0.8

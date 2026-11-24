@@ -272,7 +272,14 @@ def industry_analysis(a: Assumptions, zone_deltas: dict, farm_npv_central: dict,
     cash = proj_total - costs[None, :]
     from .farm import irr_vectorised
 
+    from .farm import mirr_vectorised, sign_changes
+
+    # IRR only where the cash flow changes sign once (otherwise it is ambiguous: when the
+    # project brings adoption forward and adoption later declines, net benefits turn
+    # negative late); MIRR at the public rate is always defined
     irr = irr_vectorised(cash)
+    irr[sign_changes(cash) != 1] = np.nan
+    mirr = mirr_vectorised(cash, r_pub)
     project = {
         "scenario": scenario, "base_year": base, "first_year": first, "last_year": end,
         "public_discount_rate": r_pub, "pv_research_cost": pv_cost,
@@ -287,6 +294,8 @@ def industry_analysis(a: Assumptions, zone_deltas: dict, farm_npv_central: dict,
         "bcr_p90": float(np.percentile(pv_b / pv_cost, 90)) if pv_cost else np.nan,
         "p_npv_positive": float((npv > 0).mean()),
         "irr_median": float(np.nanmedian(irr)) if np.isfinite(irr).any() else np.nan,
+        "irr_defined_share": float(np.isfinite(irr).mean()),
+        "mirr_median": float(np.nanmedian(mirr)) if np.isfinite(mirr).any() else np.nan,
     }
     annual = pd.DataFrame({
         "year": years, "research_cost": costs,

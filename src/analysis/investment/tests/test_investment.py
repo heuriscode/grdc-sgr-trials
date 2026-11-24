@@ -222,3 +222,12 @@ def test_reallocation_moves_weak_systems_area_to_better_ones():
     assert get(on, "Pulse-canola")["pv_industry_benefit_mean"] == 0
     assert get(on, "More pulses")["adoption_ceiling_share_mean"] > get(off, "More pulses")["adoption_ceiling_share_mean"] * 1.5
     assert get(on, "More pulses")["adoption_ceiling_share_mean"] <= a.get("adoption.joint_cap_share") + 1e-9
+
+
+def test_mirr_and_sign_changes():
+    from src.analysis.investment.farm import mirr_vectorised, sign_changes
+
+    cash = np.array([[-100.0, 60.0, 60.0]])
+    m = mirr_vectorised(cash, 0.05)[0]
+    assert m == pytest.approx(((60 * 1.05 + 60) / 100) ** 0.5 - 1, rel=1e-9)
+    assert list(sign_changes(np.array([[-1, 2, 3, -1.0], [-1, 1, 1, 1.0]]))) == [2, 1]

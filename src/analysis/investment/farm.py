@@ -73,6 +73,31 @@ def irr_vectorised(cash: np.ndarray, lo: float = -0.95, hi: float = 5.0, iters: 
     return out
 
 
+def mirr_vectorised(cash: np.ndarray, rate: float) -> np.ndarray:
+    """Modified IRR per row: negatives discounted and positives compounded at ``rate``.
+
+    Well defined whatever the number of sign changes (unlike IRR).
+    """
+    n = cash.shape[1]
+    t = np.arange(n, dtype=float)
+    pv_neg = -(np.where(cash < 0, cash, 0.0) / (1 + rate) ** t).sum(axis=1)
+    fv_pos = (np.where(cash > 0, cash, 0.0) * (1 + rate) ** (n - 1 - t)).sum(axis=1)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        out = (fv_pos / pv_neg) ** (1.0 / (n - 1)) - 1
+    out[(pv_neg <= 0) | (fv_pos <= 0)] = np.nan
+    return out
+
+
+def sign_changes(cash: np.ndarray) -> np.ndarray:
+    s = np.sign(cash)
+    s = np.where(s == 0, np.nan, s)
+    out = np.zeros(cash.shape[0], dtype=int)
+    for i, row in enumerate(s):
+        r = row[~np.isnan(row)]
+        out[i] = int((np.diff(r) != 0).sum())
+    return out
+
+
 def capital_schedule(a: Assumptions, cls: str, horizon: int, scenario: str) -> tuple[np.ndarray, float]:
     """(capital outlays by farm year 1..H, residual value at end of year H)."""
     capex = np.zeros(horizon)
