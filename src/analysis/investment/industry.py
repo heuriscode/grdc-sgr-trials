@@ -104,7 +104,8 @@ def research_costs(a: Assumptions, scenario: str) -> pd.Series:
 
 
 def industry_analysis(a: Assumptions, zone_deltas: dict, farm_npv_central: dict, n_draws: int,
-                      rng: np.random.Generator, scenario: str = "central", confidence: dict | None = None, evidence_weighting: bool = True) -> dict:
+                      rng: np.random.Generator, scenario: str = "central", confidence: dict | None = None, evidence_weighting: bool = True,
+                      reallocate: bool = True, cap_at_class_high: bool = False) -> dict:
     """Industry and project BCA by Monte Carlo.
 
     zone_deltas: {(zone, broad): bootstrap draws of the mean annual GM gain ($/ha)}
@@ -130,6 +131,10 @@ def industry_analysis(a: Assumptions, zone_deltas: dict, farm_npv_central: dict,
     rows = []
     gross_by_key, proj_by_key, share_by_key = {}, {}, {}
     zones = sorted({z for z, _ in zone_deltas})
+    zone_area = {z: triangular(rng, *a.triple(f"zones.{z}.crop_area_ha"), n_draws) for z in zones}
+
+    # ---- pass 1: per system draws, adoption gate and confidence
+    sysd = {}
     for (zone, broad), deltas in zone_deltas.items():
         cls = adoption_class(broad)
         if broad == "Baseline" or len(deltas) == 0:
@@ -140,7 +145,6 @@ def industry_analysis(a: Assumptions, zone_deltas: dict, farm_npv_central: dict,
         p_pos = float(confidence[(zone, broad)]) if confidence and (zone, broad) in confidence \
             else float(np.mean(deltas > 0))
         evidence_ok = p_pos >= evidence_threshold
-        area = triangular(rng, *a.triple(f"zones.{zone}.crop_area_ha"), n_draws)
         ceiling = triangular(rng, *a.triple(f"adoption.{cls}.ceiling_share"), n_draws)
         ytp = triangular(rng, *a.triple(f"adoption.{cls}.years_to_peak"), n_draws)
         lag = triangular(rng, *a.triple(f"adoption.{cls}.lag_years"), n_draws)
@@ -165,14 +169,6 @@ def industry_analysis(a: Assumptions, zone_deltas: dict, farm_npv_central: dict,
         # use the full distribution of the gain (losses included), so no upside-only bias.
         gate = farm_npv_central.get((zone, broad), np.nan)
         adopt = bool(np.isfinite(gate) and gate > 0 and evidence_ok)
-        if not adopt:
-            ceiling = np.zeros(n_draws)
-        elif evidence_weighting:
-            # confidence-weighted adoption: the ceiling is scaled by the confidence that the
-            # system really beats the baseline. A system that wins in 60% of resamples is
-            # credited with 60% of the adoption a certain winner would get - growers and
-            # advisers act on clear, repeated advantages, and weak evidence spreads slowly.
-            ceiling = ceiling * p_pos
         p_gain[(zone, broad)] = p_pos
         p_adopt[(zone, broad)] = float(adopt)
         gate_reason[(zone, broad)] = (
@@ -180,11 +176,47 @@ def industry_analysis(a: Assumptions, zone_deltas: dict, farm_npv_central: dict,
             else "expected farm NPV not positive" if not (np.isfinite(gate) and gate > 0)
             else f"evidence below threshold (P(gain>0)={p_pos:.2f} < {evidence_threshold:.2f})"
         )
+        sysd[(zone, broad)] = dict(ceiling_raw=ceiling, ytp=ytp, lag=lag, dis=dis, net=net,
+                                   learn_once=learn_once, adopt=adopt, p_pos=p_pos,
+                                   mean_net=float(np.mean(net)))
 
-        with_p = logistic_adoption(years, ceiling, adoption_start + lag, ytp, dis)
-        without_p = logistic_adoption(years, ceiling * cf_ceiling, adoption_start + lag + advance, ytp, dis)
+    # ---- pass 2: adoption ceilings per zone
+    alloc_rows = []
+    for zone in zones:
+        keys = [k for k in sysd if k[0] == zone]
+        if not keys:
+            continue
+        better = [k for k in keys if sysd[k]["adopt"]]
+        if reallocate:
+            # Systems compete for the same paddocks. The zone's potential adoption area -
+            # the ceilings of ALL systems tested there, capped jointly - goes to the better
+            # systems only, shared in proportion to expected net gain x confidence
+            # (confidence only if evidence_weighting). Weaker systems get none.
+            pool = np.minimum(sum(sysd[k]["ceiling_raw"] for k in keys), joint_cap)
+            w = {k: max(sysd[k]["mean_net"], 0.0) * (sysd[k]["p_pos"] if evidence_weighting else 1.0)
+                 for k in better}
+            wsum = sum(w.values())
+            for k in keys:
+                share = w.get(k, 0.0) / wsum if wsum > 0 else 0.0
+                c = pool * share
+                if cap_at_class_high:
+                    # no system may exceed the HIGH ceiling of its own adoption class
+                    c = np.minimum(c, a.triple(f"adoption.{adoption_class(k[1])}.ceiling_share")[2])
+                sysd[k]["ceiling"] = c
+                alloc_rows.append({"zone": zone, "broad_category": k[1], "allocation_weight": share})
+        else:
+            for k in keys:
+                c = sysd[k]["ceiling_raw"] * (sysd[k]["p_pos"] if evidence_weighting else 1.0)
+                sysd[k]["ceiling"] = c if sysd[k]["adopt"] else np.zeros(n_draws)
 
-        def benefits(share):
+    # ---- pass 3: adoption curves and benefits
+    for (zone, broad), d in sysd.items():
+        area = zone_area[zone]
+        ceiling = d["ceiling"]
+        with_p = logistic_adoption(years, ceiling, adoption_start + d["lag"], d["ytp"], d["dis"])
+        without_p = logistic_adoption(years, ceiling * cf_ceiling, adoption_start + d["lag"] + advance, d["ytp"], d["dis"])
+
+        def benefits(share, net=d["net"], learn_once=d["learn_once"]):
             adopted = area[:, None] * share
             new = np.clip(np.diff(adopted, axis=1, prepend=0.0), 0, None)
             return adopted * net[:, None] - new * learn_once
@@ -195,16 +227,18 @@ def industry_analysis(a: Assumptions, zone_deltas: dict, farm_npv_central: dict,
         proj_by_key[(zone, broad)] = proj
         share_by_key[(zone, broad)] = with_p
 
-    # joint cap: systems compete for the same paddocks
-    for zone in zones:
-        keys = [k for k in share_by_key if k[0] == zone]
-        if not keys:
-            continue
-        total = sum(share_by_key[k] for k in keys)
-        scale = np.where(total > joint_cap, joint_cap / np.maximum(total, 1e-12), 1.0)
-        for k in keys:
-            gross_by_key[k] = gross_by_key[k] * scale
-            proj_by_key[k] = proj_by_key[k] * scale
+    # joint cap (when not reallocating): systems compete for the same paddocks
+    if not reallocate:
+        for zone in zones:
+            keys = [k for k in share_by_key if k[0] == zone]
+            if not keys:
+                continue
+            total = sum(share_by_key[k] for k in keys)
+            scale = np.where(total > joint_cap, joint_cap / np.maximum(total, 1e-12), 1.0)
+            for k in keys:
+                gross_by_key[k] = gross_by_key[k] * scale
+                proj_by_key[k] = proj_by_key[k] * scale
+                share_by_key[k] = share_by_key[k] * scale
 
     for (zone, broad), gross in gross_by_key.items():
         proj = proj_by_key[(zone, broad)]
@@ -217,6 +251,7 @@ def industry_analysis(a: Assumptions, zone_deltas: dict, farm_npv_central: dict,
             "adoption_gate": gate_reason.get((zone, broad), ""),
             "confidence_beats_baseline": p_gain.get((zone, broad), np.nan),
             "mean_gm_gain_per_ha": float(np.mean(zone_deltas[(zone, broad)])),
+            "adoption_ceiling_share_mean": float(np.mean(sysd[(zone, broad)]["ceiling"])),
             "peak_adoption_share_mean": float(peak_ha.mean()),
             "pv_industry_benefit_mean": float(pv_g.mean()),
             "pv_industry_benefit_p10": float(np.percentile(pv_g, 10)),

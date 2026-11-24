@@ -52,6 +52,8 @@ class RunOptions:
     seed: int = 20261124
     shrink_estimates: bool = True         # empirical-Bayes shrinkage of mean gains (industry/project)
     evidence_weighting: bool = True       # scale adoption by confidence that the system beats baseline
+    reallocate_adoption: bool = True      # zone's potential adoption area goes to the better systems only
+    cap_at_class_high: bool = False       # with reallocation, cap each system at its class's high ceiling
     gain_selection: str = "mean"          # 'mean' of a zone's sites; 'best_site' (comparison scenario only)
     run_serf: bool = True
     run_sensitivity: bool = True
@@ -157,7 +159,8 @@ def _core(td, a: Assumptions, opts: RunOptions, rng: np.random.Generator, zones:
     confidence = {k: float(np.mean(v > 0)) for k, v in zone_deltas.items() if len(v)}
     industry = industry_analysis(a, gains, farm_npv, opts.n_industry_draws,
                                  np.random.default_rng(opts.seed + 1), opts.scenario,
-                                 confidence=confidence, evidence_weighting=opts.evidence_weighting)
+                                 confidence=confidence, evidence_weighting=opts.evidence_weighting,
+                                 reallocate=opts.reallocate_adoption, cap_at_class_high=opts.cap_at_class_high)
     tab = industry["table"]
     if not tab.empty:
         f = farm_table(farm_results)[["zone", "broad_category", "sites"]]
@@ -233,7 +236,8 @@ def sensitivity(td, a: Assumptions, opts: RunOptions, zones: pd.DataFrame, base:
                             for k in base["farm_gate"] if len(base["zone_deltas"].get(k, []))}
                 ind = industry_analysis(a2, base["zone_deltas"], gate, opts.n_industry_draws,
                                         np.random.default_rng(opts.seed + 1), opts.scenario,
-                                        confidence=base["confidence"], evidence_weighting=opts.evidence_weighting)
+                                        confidence=base["confidence"], evidence_weighting=opts.evidence_weighting,
+                                        reallocate=opts.reallocate_adoption, cap_at_class_high=opts.cap_at_class_high)
             else:
                 small = RunOptions(**{**opts.__dict__, "run_serf": False})
                 ind = _core(td, a2, small, np.random.default_rng(opts.seed), zones, with_risk=False)["industry"]

@@ -184,7 +184,8 @@ def test_confidence_weighting_scales_benefits():
 
     def pv(conf):
         out = industry_analysis(a, deltas, gate, 400, np.random.default_rng(0),
-                                confidence={("SA_MNLYE", "More pulses"): conf}, evidence_weighting=True)
+                                confidence={("SA_MNLYE", "More pulses"): conf}, evidence_weighting=True,
+                                reallocate=False)
         return out["table"]["pv_industry_benefit_mean"].iloc[0]
 
     full, half = pv(1.0), pv(0.5)
@@ -201,3 +202,23 @@ def test_profile_overlay_merges_and_validates(tmp_path):
     (tmp_path / "a_bad.yaml").write_text(yaml.safe_dump({"g": {"x": {"central": 9}}}))
     with pytest.raises(ValueError):
         Assumptions.load(str(tmp_path / "a.yaml"), "bad")
+
+
+@pytest.mark.skipif(not REPO_FILES, reason="run from the repo root")
+def test_reallocation_moves_weak_systems_area_to_better_ones():
+    from src.analysis.investment.industry import industry_analysis
+
+    a = Assumptions.load()
+    z = "SA_MNLYE"
+    deltas = {(z, "More pulses"): np.full(200, 60.0), (z, "Pulse-canola"): np.full(200, -40.0),
+              (z, "Intercropping"): np.full(200, -60.0)}
+    gate = {(z, "More pulses"): 1e5, (z, "Pulse-canola"): -1e5, (z, "Intercropping"): -1e5}
+    conf = {k: (1.0 if k[1] == "More pulses" else 0.0) for k in deltas}
+    kw = dict(confidence=conf, evidence_weighting=True)
+    on = industry_analysis(a, deltas, gate, 400, np.random.default_rng(0), reallocate=True, **kw)["table"]
+    off = industry_analysis(a, deltas, gate, 400, np.random.default_rng(0), reallocate=False, **kw)["table"]
+    get = lambda t, b: t.set_index("broad_category").loc[b]
+    # weaker systems get nothing; the better one takes the pooled area (rotation 8% + multicrop 2% + rotation 8%, capped)
+    assert get(on, "Pulse-canola")["pv_industry_benefit_mean"] == 0
+    assert get(on, "More pulses")["adoption_ceiling_share_mean"] > get(off, "More pulses")["adoption_ceiling_share_mean"] * 1.5
+    assert get(on, "More pulses")["adoption_ceiling_share_mean"] <= a.get("adoption.joint_cap_share") + 1e-9
