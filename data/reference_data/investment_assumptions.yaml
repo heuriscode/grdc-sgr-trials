@@ -8,6 +8,9 @@
 # "low" and "high" are numeric bounds (low <= central <= high), not pessimistic/optimistic;
 # for years-to-peak and lag the HIGH number is the pessimistic one.
 #
+# Rulings (project lead, 24 Nov 2026): baseline rule 'auto' and the broad-category mapping accepted
+# as recommended; judgement-status cost placeholders (multicrop capital, hay making, agistment) accepted
+# for the milestone, to be replaced by quotes when available.
 # Principle (project lead, 24 Nov 2026): realistic assumptions everywhere. Ex-ante RDC
 # impact assessments are known to overstate adoption (Productivity Commission 2011, Rural
 # Research and Development Corporations, pp.109, 123; Pannell 2024; Hurley, Rao & Pardey 2014).

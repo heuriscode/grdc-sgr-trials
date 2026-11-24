@@ -1,110 +1,110 @@
-site,system_category,broad_category,is_multicrop,n_strategy,confirmed
-APPILA,Baseline,Baseline,False,,False
-APPILA,Hay,Hay,False,,False
-APPILA,More pulses,More pulses,False,,False
-APPILA,Pulse-canola,Pulse-canola,False,,False
-APPILA,Responsive: Adviser (risk-averse),Responsive: adviser,False,,False
-APPILA,Responsive: Adviser (risk-tolerant),Responsive: adviser,False,,False
-EDILLILIE,Alternative pulse (Dec 2 N),Alternative pulse,False,Decile 2,False
-EDILLILIE,Alternative pulse (Dec 7 N),Alternative pulse,False,Decile 7,False
-EDILLILIE,Baseline (Dec 2 N),Baseline,False,Decile 2,False
-EDILLILIE,Baseline (Dec 7 N),Baseline,False,Decile 7,False
-EDILLILIE,Baseline (Std N),Baseline,False,Std,False
-EDILLILIE,Pulse-canola,Pulse-canola,False,,False
-HART,Baseline (Mid N),Baseline,False,Mid,False
-HART,Baseline (SDP High N),Baseline,False,High,False
-HART,Baseline (SDP N),Baseline,False,SDP,False
-HART,Canola (High N),Canola,False,High,False
-HART,Canola (Low N),Canola,False,Low,False
-HART,Canola (Mid N),Canola,False,Mid,False
-HART,Intercropping (Full N intercrop),Intercropping,True,Full,False
-HART,Intercropping (Half N intercrop),Intercropping,True,Half,False
-HART,Intercropping (Nil N intercrop),Intercropping,True,Nil,False
-HART,More cereals,More cereals,False,,False
-HART,More pulses,More pulses,False,,False
-HART,Pulse on pulse,Pulse on pulse,False,,False
-HART,Pulse-canola,Pulse-canola,False,,False
-HART,Responsive: Adviser (risk-neutral) (High N),Responsive: adviser,False,High,False
-HART,Responsive: Adviser (risk-neutral) (Low N),Responsive: adviser,False,Low,False
-HART,Responsive: Adviser (risk-neutral) (Mid N),Responsive: adviser,False,Mid,False
-HART,Responsive: Adviser (risk-tolerant),Responsive: adviser,False,,False
-HART,Winter cover cropping,Winter cover cropping,False,,False
-KINNABULLA,Alternative winter cover cropping,Winter cover cropping,False,,False
-KINNABULLA,Baseline (Dec 5 N),Baseline,False,Decile 5,False
-KINNABULLA,Baseline (Dec 9 N),Baseline,False,Decile 9,False
-KINNABULLA,Baseline (SDP N),Baseline,False,SDP,False
-KINNABULLA,Continous wheat,Continuous wheat,False,,False
-KINNABULLA,Fallow,Fallow,False,,False
-KINNABULLA,Legume-barley,Legume-barley,False,,False
-KINNABULLA,Mixed winter cover crop,Winter cover cropping,False,,False
-KINNABULLA,More cereals,More cereals,False,,False
-KINNABULLA,More pulses (Dec 5 N),More pulses,False,Decile 5,False
-KINNABULLA,More pulses (Dec 9 N),More pulses,False,Decile 9,False
-KINNABULLA,Pulse on pulse,Pulse on pulse,False,,False
-KINNABULLA,Pulse-canola,Pulse-canola,False,,False
-KINNABULLA,Responsive: Adviser (risk-neutral),Responsive: adviser,False,,False
-KINNABULLA,Responsive: Less chemical inputs,Responsive: less chemical,False,,False
-KINNABULLA,Responsive: N bank,Responsive: N bank,False,,False
-KINNABULLA,Winter cover cropping (Early TOT),Winter cover cropping,False,,False
-KINNABULLA,Winter cover cropping (Late TOT),Winter cover cropping,False,,False
-MANANG,Baseline (Dec 5 N),Baseline,False,Decile 5,False
-MANANG,Baseline (Dec 9 N),Baseline,False,Decile 9,False
-MANANG,Baseline (SDP N),Baseline,False,SDP,False
-MANANG,Companion cropping (Dec 5 N ntercrop),Companion cropping,True,Decile 5,False
-MANANG,Companion cropping (Nil N intercrop),Companion cropping,True,Nil,False
-MANANG,Companion cropping frequent,Companion cropping,True,,False
-MANANG,Continous wheat,Continuous wheat,False,,False
-MANANG,Fallow,Fallow,False,,False
-MANANG,Hay,Hay,False,,False
-MANANG,More cereals,More cereals,False,,False
-MANANG,More pulses,More pulses,False,,False
-MANANG,Pulse on pulse,Pulse on pulse,False,,False
-MANANG,Pulse-canola,Pulse-canola,False,,False
-MANANG,Responsive: Adviser (risk-neutral),Responsive: adviser,False,,False
-MANANG,Responsive: N bank,Responsive: N bank,False,,False
-MANANG,Winter cover cropping (Early TOT),Winter cover cropping,False,,False
-MANANG,Winter cover cropping (Late TOT),Winter cover cropping,False,,False
-ROSEWORTHY,Baseline (BMP N),Baseline,False,BMP,False
-ROSEWORTHY,Baseline (SDP N),Baseline,False,SDP,False
-ROSEWORTHY,High value broadleaf,High value broadleaf,False,,False
-ROSEWORTHY,Intercropping,Intercropping,True,,False
-ROSEWORTHY,More pulses,More pulses,False,,False
-ROSEWORTHY,Responsive: Adviser (risk-neutral),Responsive: adviser,False,,False
-ROSEWORTHY,Responsive: Enhance soil health,Responsive: soil health,False,,False
-ROSEWORTHY,Responsive: Organic fertiliser,Responsive: organic fertiliser,False,,False
-ROSEWORTHY,Winter cover cropping,Winter cover cropping,False,,False
-STREATHAM,Baseline (TOS1 & High N),Baseline,False,High,False
-STREATHAM,Baseline (TOS1 & Low N),Baseline,False,Low,False
-STREATHAM,Baseline (TOS1 & Mid N),Baseline,False,Mid,False
-STREATHAM,Baseline (TOS2 & Mid N),Baseline,False,Mid,False
-STREATHAM,Companion cropping frequent,Companion cropping,True,,False
-STREATHAM,Hay,Hay,False,,False
-STREATHAM,Intercropping (Full N intercrop),Intercropping,True,Full,False
-STREATHAM,Intercropping (Half N intercrop),Intercropping,True,Half,False
-STREATHAM,Intercropping (Nil N intercrop),Intercropping,True,Nil,False
-STREATHAM,More cereals,More cereals,False,,False
-STREATHAM,More pulses,More pulses,False,,False
-STREATHAM,Pasture 1/3 (PastMix1),Pasture,False,,False
-STREATHAM,Pasture 1/3 (PastMix2),Pasture,False,,False
-STREATHAM,Pasture 2/4,Pasture,False,,False
-STREATHAM,Pulse-canola (TOS1 & High N),Pulse-canola,False,High,False
-STREATHAM,Pulse-canola (TOS1 & Low N),Pulse-canola,False,Low,False
-STREATHAM,Pulse-canola (TOS1 & Mid N),Pulse-canola,False,Mid,False
-STREATHAM,Pulse-canola (TOS2 & Mid N),Pulse-canola,False,Mid,False
-STREATHAM,Responsive: Adviser (risk-neutral),Responsive: adviser,False,,False
-STREATHAM,Responsive: Enhance soil health,Responsive: soil health,False,,False
-STREATHAM,Responsive: Persistent pasture,Responsive: persistent pasture,False,,False
-STREATHAM,Winter cover cropping,Winter cover cropping,False,,False
-WALLUP,Baseline,Baseline,False,,False
-WALLUP,Companion cropping,Companion cropping,True,,False
-WALLUP,Pulse-canola,Pulse-canola,False,,False
-WALLUP,Responsive: Adviser (risk-neutral),Responsive: adviser,False,,False
-WALLUP,Responsive: N bank,Responsive: N bank,False,,False
-WALLUP,Winter cover cropping,Winter cover cropping,False,,False
-WARRAMBINE,Alternative pulse,Alternative pulse,False,,False
-WARRAMBINE,Baseline,Baseline,False,,False
-WARRAMBINE,Pasture 1/3,Pasture,False,,False
-WARRAMBINE,Pulse-canola,Pulse-canola,False,,False
-WARRAMBINE,Responsive: Adviser (risk-neutral),Responsive: adviser,False,,False
-WARRAMBINE,Responsive: Enhance soil health,Responsive: soil health,False,,False
-WARRAMBINE,Winter cover cropping,Winter cover cropping,False,,False
+site,system_category,broad_category,is_multicrop,n_strategy,confirmed,confirmed_note
+APPILA,Baseline,Baseline,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+APPILA,Hay,Hay,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+APPILA,More pulses,More pulses,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+APPILA,Pulse-canola,Pulse-canola,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+APPILA,Responsive: Adviser (risk-averse),Responsive: adviser,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+APPILA,Responsive: Adviser (risk-tolerant),Responsive: adviser,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+EDILLILIE,Alternative pulse (Dec 2 N),Alternative pulse,False,Decile 2,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+EDILLILIE,Alternative pulse (Dec 7 N),Alternative pulse,False,Decile 7,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+EDILLILIE,Baseline (Dec 2 N),Baseline,False,Decile 2,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+EDILLILIE,Baseline (Dec 7 N),Baseline,False,Decile 7,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+EDILLILIE,Baseline (Std N),Baseline,False,Std,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+EDILLILIE,Pulse-canola,Pulse-canola,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,Baseline (Mid N),Baseline,False,Mid,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,Baseline (SDP High N),Baseline,False,High,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,Baseline (SDP N),Baseline,False,SDP,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,Canola (High N),Canola,False,High,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,Canola (Low N),Canola,False,Low,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,Canola (Mid N),Canola,False,Mid,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,Intercropping (Full N intercrop),Intercropping,True,Full,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,Intercropping (Half N intercrop),Intercropping,True,Half,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,Intercropping (Nil N intercrop),Intercropping,True,Nil,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,More cereals,More cereals,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,More pulses,More pulses,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,Pulse on pulse,Pulse on pulse,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,Pulse-canola,Pulse-canola,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,Responsive: Adviser (risk-neutral) (High N),Responsive: adviser,False,High,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,Responsive: Adviser (risk-neutral) (Low N),Responsive: adviser,False,Low,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,Responsive: Adviser (risk-neutral) (Mid N),Responsive: adviser,False,Mid,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,Responsive: Adviser (risk-tolerant),Responsive: adviser,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+HART,Winter cover cropping,Winter cover cropping,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,Alternative winter cover cropping,Winter cover cropping,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,Baseline (Dec 5 N),Baseline,False,Decile 5,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,Baseline (Dec 9 N),Baseline,False,Decile 9,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,Baseline (SDP N),Baseline,False,SDP,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,Continous wheat,Continuous wheat,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,Fallow,Fallow,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,Legume-barley,Legume-barley,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,Mixed winter cover crop,Winter cover cropping,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,More cereals,More cereals,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,More pulses (Dec 5 N),More pulses,False,Decile 5,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,More pulses (Dec 9 N),More pulses,False,Decile 9,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,Pulse on pulse,Pulse on pulse,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,Pulse-canola,Pulse-canola,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,Responsive: Adviser (risk-neutral),Responsive: adviser,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,Responsive: Less chemical inputs,Responsive: less chemical,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,Responsive: N bank,Responsive: N bank,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,Winter cover cropping (Early TOT),Winter cover cropping,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+KINNABULLA,Winter cover cropping (Late TOT),Winter cover cropping,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+MANANG,Baseline (Dec 5 N),Baseline,False,Decile 5,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+MANANG,Baseline (Dec 9 N),Baseline,False,Decile 9,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+MANANG,Baseline (SDP N),Baseline,False,SDP,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+MANANG,Companion cropping (Dec 5 N ntercrop),Companion cropping,True,Decile 5,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+MANANG,Companion cropping (Nil N intercrop),Companion cropping,True,Nil,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+MANANG,Companion cropping frequent,Companion cropping,True,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+MANANG,Continous wheat,Continuous wheat,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+MANANG,Fallow,Fallow,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+MANANG,Hay,Hay,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+MANANG,More cereals,More cereals,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+MANANG,More pulses,More pulses,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+MANANG,Pulse on pulse,Pulse on pulse,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+MANANG,Pulse-canola,Pulse-canola,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+MANANG,Responsive: Adviser (risk-neutral),Responsive: adviser,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+MANANG,Responsive: N bank,Responsive: N bank,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+MANANG,Winter cover cropping (Early TOT),Winter cover cropping,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+MANANG,Winter cover cropping (Late TOT),Winter cover cropping,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+ROSEWORTHY,Baseline (BMP N),Baseline,False,BMP,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+ROSEWORTHY,Baseline (SDP N),Baseline,False,SDP,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+ROSEWORTHY,High value broadleaf,High value broadleaf,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+ROSEWORTHY,Intercropping,Intercropping,True,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+ROSEWORTHY,More pulses,More pulses,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+ROSEWORTHY,Responsive: Adviser (risk-neutral),Responsive: adviser,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+ROSEWORTHY,Responsive: Enhance soil health,Responsive: soil health,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+ROSEWORTHY,Responsive: Organic fertiliser,Responsive: organic fertiliser,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+ROSEWORTHY,Winter cover cropping,Winter cover cropping,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Baseline (TOS1 & High N),Baseline,False,High,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Baseline (TOS1 & Low N),Baseline,False,Low,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Baseline (TOS1 & Mid N),Baseline,False,Mid,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Baseline (TOS2 & Mid N),Baseline,False,Mid,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Companion cropping frequent,Companion cropping,True,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Hay,Hay,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Intercropping (Full N intercrop),Intercropping,True,Full,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Intercropping (Half N intercrop),Intercropping,True,Half,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Intercropping (Nil N intercrop),Intercropping,True,Nil,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,More cereals,More cereals,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,More pulses,More pulses,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Pasture 1/3 (PastMix1),Pasture,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Pasture 1/3 (PastMix2),Pasture,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Pasture 2/4,Pasture,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Pulse-canola (TOS1 & High N),Pulse-canola,False,High,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Pulse-canola (TOS1 & Low N),Pulse-canola,False,Low,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Pulse-canola (TOS1 & Mid N),Pulse-canola,False,Mid,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Pulse-canola (TOS2 & Mid N),Pulse-canola,False,Mid,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Responsive: Adviser (risk-neutral),Responsive: adviser,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Responsive: Enhance soil health,Responsive: soil health,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Responsive: Persistent pasture,Responsive: persistent pasture,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+STREATHAM,Winter cover cropping,Winter cover cropping,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+WALLUP,Baseline,Baseline,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+WALLUP,Companion cropping,Companion cropping,True,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+WALLUP,Pulse-canola,Pulse-canola,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+WALLUP,Responsive: Adviser (risk-neutral),Responsive: adviser,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+WALLUP,Responsive: N bank,Responsive: N bank,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+WALLUP,Winter cover cropping,Winter cover cropping,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+WARRAMBINE,Alternative pulse,Alternative pulse,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+WARRAMBINE,Baseline,Baseline,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+WARRAMBINE,Pasture 1/3,Pasture,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+WARRAMBINE,Pulse-canola,Pulse-canola,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+WARRAMBINE,Responsive: Adviser (risk-neutral),Responsive: adviser,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+WARRAMBINE,Responsive: Enhance soil health,Responsive: soil health,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
+WARRAMBINE,Winter cover cropping,Winter cover cropping,False,,True,"rule-generated mapping accepted as recommended, 24 Nov 2026 (project lead)"
