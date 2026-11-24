@@ -34,6 +34,7 @@ Run from the repo root. Requires numpy, pandas, scipy, pyyaml and matplotlib.
 - **The project is credited only with bringing adoption forward** (Marsh, Pannell & Lindner 2000). It is not credited with the whole adoption curve. It is also discounted for attribution and probability of success.
 - **Shrinkage.** A system with one site and three seasons has a wide interval. Its mean gain is pulled towards zero by empirical-Bayes shrinkage (`gain_shrinkage.csv`).
 - **Adoption gate.** Adoption is credited only where the representative farm's expected NPV at the shrunk gain is positive.
+- **Confidence-weighted adoption (default).** Confidence is the share of 2,000 bootstrap resamples of the trial data (trial years and replicate plots drawn with replacement) in which a system's average gross margin beats its baseline's. Each system's adoption ceiling is multiplied by its confidence, so a system at 77% is credited with 77% of the uptake a proven system would get. Confidence is not the chance of a profit in any one year. Turn it off with `evidence_weighting=False`.
 - **Evidence stress test.** `adoption.evidence_threshold` is off at 0.5. Setting it to 0.8 credits only systems with at least an 80% bootstrap probability of beating the baseline.
 
 ## Choices you can make
@@ -47,6 +48,7 @@ Run from the repo root. Requires numpy, pandas, scipy, pyyaml and matplotlib.
 | `price_method` | `historical` | `historical` or `lognormal`. |
 | `revenue_basis` | `recorded` | `recorded` anchors revenue to the pipeline's recorded revenue; yields only weight each crop's price. `yields` rebuilds revenue from the yields in the GM table. |
 | `shrink_estimates` | `True` | Empirical-Bayes shrinkage of mean gains. |
+| `evidence_weighting` | `True` | Scale each system's adoption ceiling by its confidence of beating the baseline. |
 | `overrides` | `{}` | Fix any parameter, e.g. `{"discounting.public_rate": 0.07}`. |
 
 ## Assumptions
@@ -74,7 +76,7 @@ Supporting reference data:
 | File | Content |
 |---|---|
 | `farm_investment_by_zone.csv` | Representative-farm NPV distribution, P(NPV>0), BCR/IRR/payback (multicrop) |
-| `trial_evidence_gain_vs_baseline.csv` | Mean gain vs baseline with 90% bootstrap interval; replaces `system_baseline_comparisons` |
+| `trial_evidence_gain_vs_baseline.csv` | Mean gain vs baseline with 90% bootstrap interval and confidence; replaces `system_baseline_comparisons` |
 | `gain_shrinkage.csv` | Raw vs shrunk mean gains |
 | `risk_summary_by_zone.csv` | Mean, SD, CV, P(loss), p10, CVaR10 for each system and its baseline |
 | `stochastic_dominance.csv` | FSD/SSD verdicts (simulated) and Barrett-Donald p-values (observed) |

@@ -50,6 +50,7 @@ class RunOptions:
     n_industry_draws: int = 5000
     seed: int = 20261124
     shrink_estimates: bool = True         # empirical-Bayes shrinkage of mean gains (industry/project)
+    evidence_weighting: bool = True       # scale adoption by confidence that the system beats baseline
     run_serf: bool = True
     run_sensitivity: bool = True
     output_dir: str | None = None
@@ -150,8 +151,10 @@ def _core(td, a: Assumptions, opts: RunOptions, rng: np.random.Generator, zones:
         k = (fr.zone, fr.broad)
         fr.summary["shrunk_mean_gain_per_ha"] = float(np.mean(gains[k])) if len(gains.get(k, [])) else np.nan
         fr.summary["farm_npv_at_shrunk_mean_gain"] = farm_npv.get(k, np.nan)
+    confidence = {k: float(np.mean(v > 0)) for k, v in zone_deltas.items() if len(v)}
     industry = industry_analysis(a, gains, farm_npv, opts.n_industry_draws,
-                                 np.random.default_rng(opts.seed + 1), opts.scenario)
+                                 np.random.default_rng(opts.seed + 1), opts.scenario,
+                                 confidence=confidence, evidence_weighting=opts.evidence_weighting)
     tab = industry["table"]
     if not tab.empty:
         f = farm_table(farm_results)[["zone", "broad_category", "sites"]]
@@ -164,11 +167,12 @@ def _core(td, a: Assumptions, opts: RunOptions, rng: np.random.Generator, zones:
     for (zone, broad), boot in zone_deltas.items():
         evidence.append({"zone": zone, "broad_category": broad, "mean_gain_per_ha": float(np.mean(boot)),
                          "ci90_low": float(np.percentile(boot, 5)), "ci90_high": float(np.percentile(boot, 95)),
-                         "p_gain_positive": float((boot > 0).mean())})
+                         "confidence_beats_baseline": float((boot > 0).mean())})
     observed_gain = {k: float(v) for k, v in
                      ((k, _observed_mean_gain(observed, zone_sites[k[0]], k[1])) for k in farm_npv)}
     return {
         "zone_deltas": gains, "farm_gate": farm_npv, "observed_gain": observed_gain,
+        "confidence": confidence,
         "shrinkage": shrinkage,
         "price_model": pm, "observed": observed, "farm": farm_table(farm_results),
         "farm_results": farm_results, "industry": industry,
@@ -225,7 +229,8 @@ def sensitivity(td, a: Assumptions, opts: RunOptions, zones: pd.DataFrame, base:
                     gate = {k: farm_npv_at_mean_gain(a2, k[0], k[1], float(np.mean(base["zone_deltas"][k])), opts.scenario)
                             for k in base["farm_gate"] if len(base["zone_deltas"].get(k, []))}
                 ind = industry_analysis(a2, base["zone_deltas"], gate, opts.n_industry_draws,
-                                        np.random.default_rng(opts.seed + 1), opts.scenario)
+                                        np.random.default_rng(opts.seed + 1), opts.scenario,
+                                        confidence=base["confidence"], evidence_weighting=opts.evidence_weighting)
             else:
                 small = RunOptions(**{**opts.__dict__, "run_serf": False})
                 ind = _core(td, a2, small, np.random.default_rng(opts.seed), zones, with_risk=False)["industry"]

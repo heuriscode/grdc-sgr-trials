@@ -172,3 +172,20 @@ def test_end_to_end_small(tmp_path):
     for f in ("assumptions_register.csv", "farm_investment_by_zone.csv", "stochastic_dominance.csv",
               "project_summary.csv", "data_query_revenue_vs_yield.csv"):
         assert (tmp_path / f).exists()
+
+
+@pytest.mark.skipif(not REPO_FILES, reason="run from the repo root")
+def test_confidence_weighting_scales_benefits():
+    from src.analysis.investment.industry import industry_analysis
+
+    a = Assumptions.load()
+    deltas = {("SA_MNLYE", "More pulses"): np.full(200, 60.0)}
+    gate = {("SA_MNLYE", "More pulses"): 1e5}
+
+    def pv(conf):
+        out = industry_analysis(a, deltas, gate, 400, np.random.default_rng(0),
+                                confidence={("SA_MNLYE", "More pulses"): conf}, evidence_weighting=True)
+        return out["table"]["pv_industry_benefit_mean"].iloc[0]
+
+    full, half = pv(1.0), pv(0.5)
+    assert full > 0 and half == pytest.approx(full / 2, rel=0.02)

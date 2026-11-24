@@ -12,7 +12,10 @@ first adoption to ~99% of the ceiling), starting after a lag, with dis-adoption 
 a constant annual rate after the peak. The long-run gain per ha is drawn from the
 (shrunk, see shrink_gains) bootstrap of the trial evidence, losses included. Adoption
 is credited only where the representative farm's expected NPV at the shrunk mean gain
-is positive. An optional hard threshold (``adoption.evidence_threshold``, off at 0.5)
+is positive. By default (``evidence_weighting``) the adoption ceiling is also scaled by
+the CONFIDENCE that the system beats its baseline: the share of bootstrap resamples of
+the trial data (trial years and replicate plots drawn with replacement) in which the
+system's average gross margin exceeds the baseline's. An optional hard threshold (``adoption.evidence_threshold``, off at 0.5)
 is a stress test: no adoption unless the bootstrap probability of a positive gain
 reaches it.
 
@@ -101,7 +104,7 @@ def research_costs(a: Assumptions, scenario: str) -> pd.Series:
 
 
 def industry_analysis(a: Assumptions, zone_deltas: dict, farm_npv_central: dict, n_draws: int,
-                      rng: np.random.Generator, scenario: str = "central") -> dict:
+                      rng: np.random.Generator, scenario: str = "central", confidence: dict | None = None, evidence_weighting: bool = True) -> dict:
     """Industry and project BCA by Monte Carlo.
 
     zone_deltas: {(zone, broad): bootstrap draws of the mean annual GM gain ($/ha)}
@@ -131,7 +134,11 @@ def industry_analysis(a: Assumptions, zone_deltas: dict, farm_npv_central: dict,
         cls = adoption_class(broad)
         if broad == "Baseline" or len(deltas) == 0:
             continue
-        p_pos = float(np.mean(deltas > 0))
+        # confidence: share of bootstrap resamples of the trial data (years and replicates)
+        # in which the system's average gross margin beats the baseline - computed on the
+        # raw, unshrunk evidence when supplied
+        p_pos = float(confidence[(zone, broad)]) if confidence and (zone, broad) in confidence \
+            else float(np.mean(deltas > 0))
         evidence_ok = p_pos >= evidence_threshold
         area = triangular(rng, *a.triple(f"zones.{zone}.crop_area_ha"), n_draws)
         ceiling = triangular(rng, *a.triple(f"adoption.{cls}.ceiling_share"), n_draws)
@@ -160,6 +167,12 @@ def industry_analysis(a: Assumptions, zone_deltas: dict, farm_npv_central: dict,
         adopt = bool(np.isfinite(gate) and gate > 0 and evidence_ok)
         if not adopt:
             ceiling = np.zeros(n_draws)
+        elif evidence_weighting:
+            # confidence-weighted adoption: the ceiling is scaled by the confidence that the
+            # system really beats the baseline. A system that wins in 60% of resamples is
+            # credited with 60% of the adoption a certain winner would get - growers and
+            # advisers act on clear, repeated advantages, and weak evidence spreads slowly.
+            ceiling = ceiling * p_pos
         p_gain[(zone, broad)] = p_pos
         p_adopt[(zone, broad)] = float(adopt)
         gate_reason[(zone, broad)] = (
@@ -202,7 +215,7 @@ def industry_analysis(a: Assumptions, zone_deltas: dict, farm_npv_central: dict,
             "farm_npv_central": farm_npv_central.get((zone, broad), np.nan),
             "adopted": bool(np.any(peak_ha > 0)),
             "adoption_gate": gate_reason.get((zone, broad), ""),
-            "p_mean_gain_positive": p_gain.get((zone, broad), np.nan),
+            "confidence_beats_baseline": p_gain.get((zone, broad), np.nan),
             "mean_gm_gain_per_ha": float(np.mean(zone_deltas[(zone, broad)])),
             "peak_adoption_share_mean": float(peak_ha.mean()),
             "pv_industry_benefit_mean": float(pv_g.mean()),
