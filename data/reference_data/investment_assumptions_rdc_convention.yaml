@@ -1,0 +1,51 @@
+# COMPARISON PROFILE - "RDC impact-assessment convention"
+#
+# Overlay on investment_assumptions.yaml, used ONLY to show what this project's BCR looks
+# like under the assumptions commonly used in published RDC impact assessments (CRRDC
+# guideline-style Agtrans/GRDC/CRDC IAs). It is not the project's view: see the base file
+# for the realistic case and why these conventions are considered optimistic.
+# Run with: from src.analysis.investment.run import run_convention_comparison
+#
+# [v] = read in full; [snippet] = search extract (GRDC PDFs blocked automated fetches).
+
+adoption:
+  joint_cap_share:
+    central: 0.25
+    low: 0.20
+    high: 0.25
+    unit: share of zone crop area changing system (all better systems together)
+    source: "Convention maximum adoption 20-25% of target area: CRDC Water Use Efficiency IA (Agtrans 2017) 20% and 25% [v]; range seen 5-55% (FFI CRC 55% [snippet])"
+    status: verified
+  rotation: &conv
+    ceiling_share: {central: 0.25, low: 0.20, high: 0.25, unit: share of zone crop area, source: "Convention maximum adoption 20-25% (CRDC WUE IA, Agtrans 2017) [v]", status: verified}
+    years_to_peak: {central: 3, low: 3, high: 6, unit: years, source: "CRDC WUE IA - first adoption to maximum in 3 years (2015-2018; 2017-2020) [v]; Northern Farming Systems IA 3-year lag [snippet]; IPM IA 6 years [v]", status: verified}
+    lag_years: {central: 1, low: 0, high: 2, unit: years after results released, source: "CRDC WUE IA - project ended 2016, first adoption 2017 [v]", status: verified}
+    disadoption_rate: {central: 0.0, low: 0.0, high: 0.0, unit: share per year after peak, source: "Benefits held at maximum to year 30 (CRDC WUE IA; PV of benefits still rising at year 30) [v]", status: verified}
+  responsive: *conv
+  cover_crop: *conv
+  multicrop: *conv
+  hay: *conv
+  pasture: *conv
+
+project:
+  probability_of_success:
+    central: 1.0
+    low: 1.0
+    high: 1.0
+    unit: combined probability of output x outcome x impact (fixed; the IPM-style 0.4 is run as a variant)
+    source: "CRDC WUE IA applied no probability factors (1.0) [v]; Grains IPM IA (Agtrans for DAF 2019) 1.0 x 0.5 x 0.8 = 0.4 [v]"
+    status: verified
+  attribution_share:
+    central: 0.5
+    low: 0.5
+    high: 0.5
+    unit: share credited to the investment (fixed; 25% is run as a variant)
+    source: "CRDC WUE IA general attribution 50% [v]; NVT IA and CRDC Sustainability 25% [snippet/v]"
+    status: verified
+  counterfactual_ceiling_share:
+    central: 0.0
+    low: 0.0
+    high: 0.0
+    unit: without-project adoption as a share of with-project (0 = none)
+    source: "No separate counterfactual - 'captured through the use of attribution factors' (CRDC WUE IA [v]; CRDC Sustainability IA 'no generalised counterfactual' [v])"
+    status: verified

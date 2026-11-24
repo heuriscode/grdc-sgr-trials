@@ -264,6 +264,42 @@ def run_convention_comparison(best_results: bool = True, **kwargs) -> dict:
     return run_investment_analysis(**opts)
 
 
+CONVENTION_VARIANTS = [
+    ("A: CRDC WUE-style - P(success) 1.0, attribution 50%, no counterfactual", {}),
+    ("B: Grains IPM-style - P(success) 0.4 (1.0 x 0.5 x 0.8), attribution 50%", {"project.probability_of_success": 0.4}),
+    ("C: as B with attribution 25% (NVT / CRDC Sustainability)",
+     {"project.probability_of_success": 0.4, "project.attribution_share": 0.25}),
+    ("D: as C with a 5-year-lag counterfactual (CSIRO early sowing)",
+     {"project.probability_of_success": 0.4, "project.attribution_share": 0.25,
+      "project.counterfactual_ceiling_share": 1.0, "project.adoption_advance_years": 5}),
+]
+
+
+def convention_variant_table(output_dir: str | None = None, best_results: bool = True, **kwargs) -> pd.DataFrame:
+    """Project BCR under the four RDC-convention variants (comparison only), plus the realistic case."""
+    opts = RunOptions(**{**CONVENTION_OPTIONS, "run_serf": False,
+                         **({"gain_selection": "best_site"} if best_results else {}), **kwargs})
+    td = build_trial_data(load_gross_margins(opts.gm_file), revenue_basis=opts.revenue_basis)
+    zones = load_site_zones()
+    rows = []
+    real = RunOptions(**{k: v for k, v in kwargs.items()}, run_serf=False)
+    p = _core(td, Assumptions.load(real.assumptions_file), real, np.random.default_rng(real.seed), zones,
+              with_risk=False)["industry"]["project"]
+    rows.append({"case": "Realistic (this analysis)", **p})
+    base = Assumptions.load(opts.assumptions_file, "rdc_convention")
+    for label, fixes in CONVENTION_VARIANTS:
+        a = base
+        for k, v in fixes.items():
+            a = _fix_param(a, k, v)
+        p = _core(td, a, opts, np.random.default_rng(opts.seed), zones, with_risk=False)["industry"]["project"]
+        rows.append({"case": label, **p})
+    df = pd.DataFrame(rows)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
+        df.to_csv(os.path.join(output_dir, "convention_comparison.csv"), index=False)
+    return df
+
+
 def run_investment_analysis(options: RunOptions | None = None, **kwargs) -> dict:
     """Run the analysis end-to-end and write csv outputs and charts. Returns the results."""
     opts = options or RunOptions(**kwargs)

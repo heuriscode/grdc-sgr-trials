@@ -37,6 +37,18 @@ Run from the repo root. Requires numpy, pandas, scipy, pyyaml and matplotlib.
 - **Confidence-weighted adoption (default).** Confidence is the share of 2,000 bootstrap resamples of the trial data (trial years and replicate plots drawn with replacement) in which a system's average gross margin beats its baseline's. Each system's adoption ceiling is multiplied by its confidence, so a system at 77% is credited with 77% of the uptake a proven system would get. Confidence is not the chance of a profit in any one year. Turn it off with `evidence_weighting=False`.
 - **Evidence stress test.** `adoption.evidence_threshold` is off at 0.5. Setting it to 0.8 credits only systems with at least an 80% bootstrap probability of beating the baseline.
 
+### Comparison with RDC impact-assessment conventions
+
+`investment_assumptions_rdc_convention.yaml` is a cited overlay holding the assumptions common in published RDC impact assessments:
+- maximum adoption of 20–25%, reached three years after a one-year lag and held for 30 years;
+- no separate counterfactual;
+- attribution of 50%;
+- probability of success of 1.0.
+
+It is for comparison only. Two functions run it:
+- `run_convention_comparison()` runs the full analysis on this basis, with no shrinkage, no confidence weighting and each zone's best trial site.
+- `convention_variant_table()` writes the realistic case plus variants A–D to `convention_comparison.csv`.
+
 ## Choices you can make
 
 | Option | Default | Meaning |
@@ -48,7 +60,11 @@ Run from the repo root. Requires numpy, pandas, scipy, pyyaml and matplotlib.
 | `price_method` | `historical` | `historical` or `lognormal`. |
 | `revenue_basis` | `recorded` | `recorded` anchors revenue to the pipeline's recorded revenue; yields only weight each crop's price. `yields` rebuilds revenue from the yields in the GM table. |
 | `shrink_estimates` | `True` | Empirical-Bayes shrinkage of mean gains. |
-| `evidence_weighting` | `True` | Scale each system's adoption ceiling by its confidence of beating the baseline. |
+| `evidence_weighting` | `True` | Confidence enters the adoption allocation (`gain × confidence` weights; with `reallocate_adoption=False`, the ceiling × confidence). |
+| `reallocate_adoption` | `True` | Pool each zone's potential adoption area (all tested systems' ceilings, capped by `adoption.joint_cap_share`) and give it to the systems that pay. Weaker systems get none. |
+| `cap_at_class_high` | `False` | When reallocating, cap each system at the high ceiling of its class. |
+| `gain_selection` | `mean` | `best_site` credits each zone with its best site (comparison scenario only). |
+| `profile` | `None` | Assumption overlay, e.g. `rdc_convention`. |
 | `overrides` | `{}` | Fix any parameter, e.g. `{"discounting.public_rate": 0.07}`. |
 
 ## Assumptions
