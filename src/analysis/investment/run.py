@@ -70,6 +70,9 @@ def _core(td, a: Assumptions, opts: RunOptions, rng: np.random.Generator, zones:
     pm = build_price_model(a, opts.scenario)
     sim = SystemSimulator(td, a, opts.baseline_rule, opts.variant_rule)
     central = pm.central_draw()
+    if opts.input_shock:  # long-run gains (industry/project) under the shocked input costs
+        central["m_urea"] = central["m_urea"] * a.get("costs.shock_urea_multiplier", opts.scenario)
+        central["m_op"] = central["m_op"] * a.get("costs.shock_operations_multiplier", opts.scenario)
 
     # observed whole-system GMs at central prices/costs (trial evidence)
     gm_rows = plot_year_gm(td, central["prices"][0], central["m_op"][0], central["m_mat"][0], central["m_urea"][0])
