@@ -189,3 +189,15 @@ def test_confidence_weighting_scales_benefits():
 
     full, half = pv(1.0), pv(0.5)
     assert full > 0 and half == pytest.approx(full / 2, rel=0.02)
+
+
+def test_profile_overlay_merges_and_validates(tmp_path):
+    base = {"r": {"central": 0.05, "low": 0.03, "high": 0.07, "source": "s", "status": "verified"},
+            "g": {"x": {"central": 1, "source": "s", "status": "judgement"}, "y": {"central": 2, "source": "s", "status": "judgement"}}}
+    (tmp_path / "a.yaml").write_text(yaml.safe_dump(base))
+    (tmp_path / "a_conv.yaml").write_text(yaml.safe_dump({"g": {"x": {"central": 9, "source": "IA", "status": "snippet"}}}))
+    a = Assumptions.load(str(tmp_path / "a.yaml"), "conv")
+    assert a.get("g.x") == 9 and a.get("g.y") == 2 and a.get("r") == 0.05
+    (tmp_path / "a_bad.yaml").write_text(yaml.safe_dump({"g": {"x": {"central": 9}}}))
+    with pytest.raises(ValueError):
+        Assumptions.load(str(tmp_path / "a.yaml"), "bad")

@@ -67,6 +67,17 @@ def _validate(node: Any, path: str = "") -> list[str]:
     return problems
 
 
+def _deep_merge(base: dict, overlay: dict) -> dict:
+    out = copy.deepcopy(base)
+    for k, v in overlay.items():
+        if isinstance(v, dict) and not _is_param_block(v) and isinstance(out.get(k), dict) \
+                and not _is_param_block(out[k]):
+            out[k] = _deep_merge(out[k], v)
+        else:
+            out[k] = copy.deepcopy(v)
+    return out
+
+
 @dataclass
 class Assumptions:
     """Parsed assumption tree with scenario-aware accessors."""
@@ -75,10 +86,23 @@ class Assumptions:
     overrides: dict = field(default_factory=dict)
 
     @classmethod
-    def load(cls, path: str | None = None) -> "Assumptions":
+    def load(cls, path: str | None = None, profile: str | None = None) -> "Assumptions":
+        """Load the assumptions file, optionally overlaid with a named profile.
+
+        A profile is ``investment_assumptions_<profile>.yaml`` beside the base file. Its
+        parameter blocks replace the base ones (deep merge); every block it supplies must
+        be cited like the base. Used for comparison scenarios such as the RDC
+        impact-assessment convention, never to change the central case silently.
+        """
         path = path or default_assumptions_path()
         with open(path, encoding="utf-8") as fh:
             tree = yaml.safe_load(fh)
+        if profile:
+            root, ext = os.path.splitext(path)
+            with open(f"{root}_{profile}{ext}", encoding="utf-8") as fh:
+                overlay = yaml.safe_load(fh) or {}
+            tree = _deep_merge(tree, overlay)
+            tree.setdefault("meta", {})["profile"] = profile
         problems = _validate(tree)
         if problems:
             raise ValueError("Invalid assumptions file:\n  " + "\n  ".join(problems))

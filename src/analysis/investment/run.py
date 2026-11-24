@@ -39,6 +39,7 @@ class RunOptions:
     gm_file: str | None = None            # None = newest gross-margin output
     revenue_basis: str = "recorded"       # or 'yields' (see inputs.build_trial_data)
     assumptions_file: str | None = None
+    profile: str | None = None            # e.g. 'rdc_convention' (overlay file beside the base)
     scenario: str = "central"             # low / central / high for all parameter blocks
     baseline_rule: object = "auto"        # 'auto' | 'mean' | 'most_numerous' | category | {site: rule}
     variant_rule: object = "auto"
@@ -51,6 +52,7 @@ class RunOptions:
     seed: int = 20261124
     shrink_estimates: bool = True         # empirical-Bayes shrinkage of mean gains (industry/project)
     evidence_weighting: bool = True       # scale adoption by confidence that the system beats baseline
+    gain_selection: str = "mean"          # 'mean' of a zone's sites; 'best_site' (comparison scenario only)
     run_serf: bool = True
     run_sensitivity: bool = True
     output_dir: str | None = None
@@ -100,7 +102,8 @@ def _core(td, a: Assumptions, opts: RunOptions, rng: np.random.Generator, zones:
             if fr is None:
                 continue
             farm_results.append(fr)
-            zone_deltas[(zone, broad)] = sim.bootstrap_mean_delta(sites, broad, central, opts.n_bootstrap, k_rng)
+            zone_deltas[(zone, broad)] = sim.bootstrap_mean_delta(sites, broad, central, opts.n_bootstrap, k_rng,
+                                                               combine=opts.gain_selection)
             fr.summary["observed_mean_gain_per_ha"] = _observed_mean_gain(observed, sites, broad)
             if not with_risk:
                 continue
@@ -239,10 +242,28 @@ def sensitivity(td, a: Assumptions, opts: RunOptions, zones: pd.DataFrame, base:
     return pd.DataFrame(rows)
 
 
+CONVENTION_OPTIONS = {"profile": "rdc_convention", "shrink_estimates": False, "evidence_weighting": False}
+
+
+def run_convention_comparison(best_results: bool = True, **kwargs) -> dict:
+    """The analysis under the assumptions typical of published RDC impact assessments.
+
+    For comparison only: assumption overlay ``investment_assumptions_rdc_convention.yaml``
+    (high, fast adoption; no counterfactual; high attribution), no shrinkage, no confidence
+    weighting and - with ``best_results`` - each zone credited with its best trial site.
+    Outputs go to data/outputs/investment/<date>_rdc_convention/.
+    """
+    opts = {**CONVENTION_OPTIONS, **({"gain_selection": "best_site"} if best_results else {}), **kwargs}
+    if "output_dir" not in opts:
+        opts["output_dir"] = os.path.join(get_outputs_path(), "investment",
+                                          datetime.datetime.now().strftime("%d_%m_%Y") + "_rdc_convention")
+    return run_investment_analysis(**opts)
+
+
 def run_investment_analysis(options: RunOptions | None = None, **kwargs) -> dict:
     """Run the analysis end-to-end and write csv outputs and charts. Returns the results."""
     opts = options or RunOptions(**kwargs)
-    a = Assumptions.load(opts.assumptions_file)
+    a = Assumptions.load(opts.assumptions_file, opts.profile)
     if opts.overrides:
         a = a.with_overrides(**opts.overrides)
     rng = np.random.default_rng(opts.seed)

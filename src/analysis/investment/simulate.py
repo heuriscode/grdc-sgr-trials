@@ -182,7 +182,7 @@ class SystemSimulator:
 
     # ----------------------------------------------------------------- evidence
     def bootstrap_mean_delta(self, sites: list[str], broad: str, central: dict, B: int,
-                             rng: np.random.Generator) -> np.ndarray:
+                             rng: np.random.Generator, combine: str = "mean") -> np.ndarray:
         """Bootstrap distribution of the MEAN annual GM difference vs baseline.
 
         Resamples trial years (with replacement) and replicates at each site, at
@@ -204,5 +204,11 @@ class SystemSimulator:
                 per_site.append(np.nanmean(d, axis=1))
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", RuntimeWarning)
-            out = np.nanmean(np.vstack(per_site), axis=0)
+            stack = np.vstack(per_site)
+            if combine == "best_site":
+                # comparison scenario only: credit the zone with its best-performing site
+                best = int(np.nanargmax(np.nanmean(stack, axis=1)))
+                out = stack[best]
+            else:
+                out = np.nanmean(stack, axis=0)
         return out[np.isfinite(out)]
