@@ -1,0 +1,376 @@
+# Investment (benefit-cost) analysis assumptions
+#
+# Every number is a parameter block: central / low / high, unit, source, status.
+#   status: verified  - read from the cited source
+#           snippet   - from a search extract; the source page could not be opened (check before publishing)
+#           judgement - analyst assumption; confirm before publishing
+#           data      - derived from trial data or a data file in this repo
+# "low" and "high" are numeric bounds (low <= central <= high), not pessimistic/optimistic;
+# for years-to-peak and lag the HIGH number is the pessimistic one.
+#
+# Principle (project lead, 24 Nov 2026): realistic assumptions everywhere. Ex-ante RDC
+# impact assessments are known to overstate adoption (Productivity Commission 2011, Rural
+# Research and Development Corporations, pp.109, 123; Pannell 2024; Hurley, Rao & Pardey 2014).
+# No-till and similar exceptional innovations are NOT used as analogues.
+
+meta:
+  base_year: 2026          # present values in 2026 real dollars
+  currency: AUD, real 2025-26 dollars
+  version: 1
+
+discounting:
+  public_rate:
+    central: 0.05
+    low: 0.03
+    high: 0.07
+    unit: real p.a.
+    source: CRRDC Impact Assessment Guidelines (2018 V2) as applied in Agtrans/RDC impact assessments; 7% is the Office of Impact Analysis rate
+    status: snippet
+  farm_rate:
+    central: 0.06
+    low: 0.04
+    high: 0.08
+    unit: real p.a.
+    source: RBA F5 small-business variable rate 9.25% (Oct 2026) and F7 new small-business loans 7.14% (Sep 2026), less ~3% CPI = ~4-6% real; central allows a modest risk margin
+    status: judgement
+
+horizons:
+  farm_years:
+    central: 20
+    low: 15
+    high: 25
+    unit: years
+    source: Typical farm investment appraisal horizon; long enough for several rotation cycles
+    status: judgement
+  project_years_after_investment:
+    central: 30
+    low: 30
+    high: 30
+    unit: years
+    source: CRRDC Impact Assessment Guidelines - investment period plus 30 years
+    status: snippet
+
+seasons:
+  # Weights on trial years when drawing a season. Equal by default; set e.g.
+  # HART: {2023: 1.0, 2024: 0.6, 2025: 1.0} to tilt towards long-run rainfall deciles.
+  year_weights:
+    default: {}
+
+prices:
+  central_statistic: median   # median or mean of the real price window
+  central_window_years:
+    central: 10
+    low: 5
+    high: 15
+    unit: years
+    source: "Central price = median real (CPI FY-mean, 2025-26 $) price over the most recent N years of price_history.csv - FAOSTAT producer prices for Australia (ABS gross unit values) 1995-2025 plus ABS levy local values 2022-23 to 2024-25; pulse series have gaps"
+    status: data
+  grain_price_level:
+    central: 1.0
+    low: 0.9
+    high: 1.1
+    unit: multiplier on central grain prices
+    source: Scenario range for long-run real grain prices
+    status: judgement
+  hay_price_per_t:
+    central: 250
+    low: 200
+    high: 330
+    unit: $/t cereal/vetch hay
+    source: Dairy Australia / AFIA Hay Report Weekly Insights, 31 Oct 2025 (old-season oaten low $200s; new-season ~$300; export oaten $305-330)
+    status: snippet
+  hay_making_cost_per_t:
+    central: 55
+    low: 40
+    high: 75
+    unit: $/t (contract mow, rake, bale, cart)
+    source: Contractor rate cards not located - placeholder pending a quote
+    status: judgement
+  agistment_value_per_ha:
+    central: 90
+    low: 40
+    high: 150
+    unit: $/ha per pasture year
+    source: Approx. 6-10 DSE/ha x 30 weeks x $0.30-0.50/DSE/week; no published SA/Vic agistment rate survey found
+    status: judgement
+  agistment_cv:
+    central: 0.3
+    low: 0.2
+    high: 0.4
+    unit: coefficient of variation
+    source: Seasonal variability of agistment demand
+    status: judgement
+
+costs:
+  operations_level_index:
+    central: 1.25
+    low: 1.10
+    high: 1.40
+    unit: multiplier on recorded operating costs (ActivitiesCosts.csv rates are 2020-21)
+    source: Movement in contract rates/fuel 2020-21 to 2025-26; confirm against the 2026 Farm Gross Margin & Enterprise Planning Guide (Ag Ex Alliance)
+    status: judgement
+  other_materials_level_index:
+    central: 1.0
+    low: 0.9
+    high: 1.2
+    unit: multiplier on recorded non-urea material costs
+    source: Product prices in the reference product tables are taken as current
+    status: judgement
+  urea_level_index:
+    central: 1.0
+    low: 0.9
+    high: 1.3
+    unit: multiplier on recorded urea costs
+    source: Reference urea price taken as current; 2026 shock handled as a scenario
+    status: judgement
+  urea_price_cv:
+    central: 0.30
+    low: 0.20
+    high: 0.40
+    unit: coefficient of variation (used only if no urea history in price_history.csv)
+    source: Urea moved from ~A$675/t (Feb 2026) to A$1,000-1,350/t (Mar-Apr 2026) - UWA Apr 2026; Reuters Apr 2026; ABARES Jun 2026
+    status: snippet
+  operations_cost_cv:
+    central: 0.10
+    low: 0.05
+    high: 0.15
+    unit: coefficient of variation (used only if no diesel history)
+    source: Fuel-driven variation in contract rates
+    status: judgement
+  other_materials_cv:
+    central: 0.10
+    low: 0.05
+    high: 0.15
+    unit: coefficient of variation
+    source: Chemical/seed price variation
+    status: judgement
+  shock_urea_multiplier:
+    central: 1.6
+    low: 1.4
+    high: 1.8
+    unit: multiplier (input-shock scenario)
+    source: Australian urea ~+60% (Reuters, Apr 2026) to +80% domestic (ABARES, Jun 2026)
+    status: snippet
+  shock_operations_multiplier:
+    central: 1.15
+    low: 1.05
+    high: 1.25
+    unit: multiplier (input-shock scenario)
+    source: Diesel ~+88% (Reuters, Apr 2026) applied to the fuel share (~15-25%) of contract operations
+    status: judgement
+  labour_rate_per_hour:
+    central: 45
+    low: 35
+    high: 60
+    unit: $/hour incl. on-costs (owner/manager or employee time)
+    source: Pastoral Award farm hand rates plus on-costs; owner time at the same rate
+    status: judgement
+
+# Agro-ecological zones (GRDC Southern region = SA, Vic, Tas). Trial sites map to zones in site_zones.csv.
+# Tas Grain has no trial site and is not extrapolated to.
+zones:
+  SA_MNLYE:
+    crop_area_ha:
+      central: 1702033
+      low: 1531829
+      high: 1957337
+      unit: ha grain crop
+      source: Ouzman, Azeem & Llewellyn 2025, Impact of weeds on Australian grain and cotton production (GRDC CSP2307-001RTX) Table 1, avg 2018-19 to 2020-21; cross-checked ABS Agricultural Commodities 2020-21 by SA2 apportioned to zones; high allows for the larger 2024-25 area (ABS Broadacre Crops 2024-25)
+      status: verified
+    farm_crop_area_ha:
+      central: 1100
+      low: 870
+      high: 1480
+      unit: ha crop per farm
+      source: ABS Agricultural Commodities 2020-21 grain ha per wheat-growing business (low) and GRDC Farm Practices Survey 2021 Table 3 representative farm crop area (high)
+      status: verified
+  SAV_MALLEE:
+    crop_area_ha:
+      central: 2787254
+      low: 2508528
+      high: 3205342
+      unit: ha grain crop
+      source: Ouzman, Azeem & Llewellyn 2025, Impact of weeds on Australian grain and cotton production (GRDC CSP2307-001RTX) Table 1, avg 2018-19 to 2020-21; cross-checked ABS Agricultural Commodities 2020-21 by SA2 apportioned to zones; high allows for the larger 2024-25 area (ABS Broadacre Crops 2024-25)
+      status: verified
+    farm_crop_area_ha:
+      central: 1700
+      low: 1540
+      high: 1920
+      unit: ha crop per farm
+      source: ABS Agricultural Commodities 2020-21 grain ha per wheat-growing business (low) and GRDC Farm Practices Survey 2021 Table 3 representative farm crop area (high)
+      status: verified
+  SAV_BW:
+    crop_area_ha:
+      central: 1809891
+      low: 1628901
+      high: 2081374
+      unit: ha grain crop
+      source: Ouzman, Azeem & Llewellyn 2025, Impact of weeds on Australian grain and cotton production (GRDC CSP2307-001RTX) Table 1, avg 2018-19 to 2020-21; cross-checked ABS Agricultural Commodities 2020-21 by SA2 apportioned to zones; high allows for the larger 2024-25 area (ABS Broadacre Crops 2024-25)
+      status: verified
+    farm_crop_area_ha:
+      central: 900
+      low: 780
+      high: 1030
+      unit: ha crop per farm
+      source: ABS Agricultural Commodities 2020-21 grain ha per wheat-growing business (low) and GRDC Farm Practices Survey 2021 Table 3 representative farm crop area (high)
+      status: verified
+  VIC_HRZ:
+    crop_area_ha:
+      central: 351699
+      low: 316529
+      high: 404453
+      unit: ha grain crop
+      source: Ouzman, Azeem & Llewellyn 2025, Impact of weeds on Australian grain and cotton production (GRDC CSP2307-001RTX) Table 1, avg 2018-19 to 2020-21; cross-checked ABS Agricultural Commodities 2020-21 by SA2 apportioned to zones; high allows for the larger 2024-25 area (ABS Broadacre Crops 2024-25)
+      status: verified
+    farm_crop_area_ha:
+      central: 530
+      low: 430
+      high: 630
+      unit: ha crop per farm
+      source: ABS Agricultural Commodities 2020-21 grain ha per wheat-growing business (low) and GRDC Farm Practices Survey 2021 Table 3 representative farm crop area (high)
+      status: verified
+
+# Adoption by system class. ceiling_share = share of the zone's crop area that eventually
+# changes, BEYOND what was happening anyway. Evidence base: GRDC Farm Practices Survey 2021
+# (pulse share 22-24% of SA/Vic crop area and price-driven; N decision tools used by 22% of
+# southern growers; VRT 11% of national crop area after 15+ years); ABS 2016-17 (intercropping
+# area -20% y/y and -50% 2011-12 to 2013-14; cover cropping 189 kha, <1% of crop area);
+# Raffeld et al. 2025 (ADOPT studies: mean years to peak 9-19).
+adoption:
+  joint_cap_share:
+    central: 0.20
+    low: 0.15
+    high: 0.30
+    unit: max combined share of zone crop area changing system (systems compete for paddocks)
+    source: Analyst cap so overlapping systems are not double counted
+    status: judgement
+  evidence_threshold:
+    central: 0.5
+    low: 0.5
+    high: 0.8
+    unit: stress test - minimum bootstrap probability that the mean GM gain over baseline is positive before any adoption is credited (0.5 = off; adoption is already conditioned on a positive gain draw by draw)
+    source: "Analyst rule reflecting adoption evidence - practices spread when the relative advantage is clear and observable (Pannell et al. 2006, Aust J Exp Agric 46:1407-1424); three trial seasons give wide intervals"
+    status: judgement
+  rotation:   # more pulses, pulse-canola, pulse on pulse, alternative pulse, canola, more cereals
+    ceiling_share: {central: 0.08, low: 0.03, high: 0.15, unit: share of zone crop area, source: "FPS 2021 Table 17 - pulse share already 22-24% in SA/Vic zones, rise price-driven; lentils ~30 yrs to >1 Mha (Sadras et al. 2021)", status: judgement}
+    years_to_peak: {central: 12, low: 8, high: 15, unit: years, source: "Raffeld et al. 2025 - ADOPT studies average 9-19 years to peak", status: snippet}
+    lag_years: {central: 3, low: 2, high: 4, unit: years after results released, source: "Lupins/lentils start-up lags; Marsh, Pannell & Lindner 2000", status: judgement}
+    disadoption_rate: {central: 0.02, low: 0.0, high: 0.05, unit: share per year after peak, source: "Zone pulse shares fell between FPS surveys in some zones (FPS 2021)", status: judgement}
+    farm_share_converted: {central: 0.5, low: 0.3, high: 1.0, unit: share of farm crop area, source: Rotation change applies to part of the farm, status: judgement}
+    farm_ramp_years: {central: 3, low: 2, high: 4, unit: years, source: One rotation cycle to convert, status: judgement}
+    extra_labour_hours_per_ha: {central: 0.1, low: 0.0, high: 0.2, unit: h/ha/yr, source: Extra marketing/management of more crop types, status: judgement}
+    learning_cost_per_ha: {central: 10, low: 0, high: 25, unit: $/ha/yr while learning, source: Agronomy learning (e.g. pulse disease/herbicide management), status: judgement}
+    learning_years: {central: 1, low: 1, high: 2, unit: years, source: judgement, status: judgement}
+  responsive:  # adviser-led, N bank, less chemical, organic fertiliser, soil health
+    ceiling_share: {central: 0.08, low: 0.03, high: 0.15, unit: share of zone crop area, source: "FPS 2021 Table 82 - 22% of southern growers already use N decision support tools; Yield Prophet reached ~1% of growers (Hunt et al. 2006)", status: judgement}
+    years_to_peak: {central: 10, low: 8, high: 12, unit: years, source: Raffeld et al. 2025, status: snippet}
+    lag_years: {central: 3, low: 2, high: 4, unit: years, source: judgement, status: judgement}
+    disadoption_rate: {central: 0.03, low: 0.0, high: 0.05, unit: share per year after peak, source: judgement, status: judgement}
+    farm_share_converted: {central: 0.5, low: 0.3, high: 1.0, unit: share of farm crop area, source: judgement, status: judgement}
+    farm_ramp_years: {central: 2, low: 1, high: 3, unit: years, source: judgement, status: judgement}
+    extra_labour_hours_per_ha: {central: 0.2, low: 0.1, high: 0.4, unit: h/ha/yr, source: "Monitoring, soil testing, adviser time (proxy for adviser fees)", status: judgement}
+    learning_cost_per_ha: {central: 5, low: 0, high: 15, unit: $/ha/yr while learning, source: judgement, status: judgement}
+    learning_years: {central: 1, low: 1, high: 2, unit: years, source: judgement, status: judgement}
+  cover_crop:  # winter cover cropping, fallow
+    ceiling_share: {central: 0.02, low: 0.005, high: 0.05, unit: share of zone crop area, source: "ABS 2016-17 Land Management and Farming - cover cropping 189 kha (<1% of crop area), down 6%; water cost under Mediterranean rainfall (Nordblom et al. 2023)", status: snippet}
+    years_to_peak: {central: 12, low: 10, high: 15, unit: years, source: Raffeld et al. 2025, status: snippet}
+    lag_years: {central: 4, low: 3, high: 5, unit: years, source: judgement, status: judgement}
+    disadoption_rate: {central: 0.05, low: 0.03, high: 0.10, unit: share per year after peak, source: "ABS cover crop area falling", status: judgement}
+    farm_share_converted: {central: 0.10, low: 0.05, high: 0.20, unit: share of farm crop area, source: judgement, status: judgement}
+    farm_ramp_years: {central: 2, low: 1, high: 3, unit: years, source: judgement, status: judgement}
+    extra_labour_hours_per_ha: {central: 0.1, low: 0.0, high: 0.2, unit: h/ha/yr, source: judgement, status: judgement}
+    learning_cost_per_ha: {central: 10, low: 0, high: 25, unit: $/ha/yr while learning, source: judgement, status: judgement}
+    learning_years: {central: 1, low: 1, high: 2, unit: years, source: judgement, status: judgement}
+  multicrop:   # intercropping, companion cropping
+    ceiling_share: {central: 0.02, low: 0.005, high: 0.05, unit: share of zone crop area, source: "ABS 4627.0 2016-17 - intercropping area -20% y/y and -50% 2011-12 to 2013-14; 'not widely used' because of labour and complexity (CSIRO, Crop & Pasture Science CP16211)", status: snippet}
+    years_to_peak: {central: 12, low: 10, high: 15, unit: years, source: Raffeld et al. 2025, status: snippet}
+    lag_years: {central: 4, low: 3, high: 5, unit: years, source: judgement, status: judgement}
+    disadoption_rate: {central: 0.07, low: 0.03, high: 0.10, unit: share per year after peak, source: "ABS intercropping area falling despite more businesses", status: judgement}
+    farm_share_converted: {central: 0.15, low: 0.05, high: 0.25, unit: share of farm crop area, source: Paddocks suited to a break-crop intercrop, status: judgement}
+    farm_ramp_years: {central: 3, low: 2, high: 4, unit: years, source: judgement, status: judgement}
+    extra_labour_hours_per_ha: {central: 0.5, low: 0.25, high: 1.0, unit: h/ha/yr, source: "Sowing, harvest, handling, segregation and selling two grains (Roberts et al. 2022)", status: judgement}
+    learning_cost_per_ha: {central: 40, low: 15, high: 80, unit: $/ha/yr while learning, source: "Yield/quality losses while learning; contract cleaning cut GM $30-60/ha at Waikerie (Roberts et al. 2019)", status: judgement}
+    learning_years: {central: 2, low: 1, high: 3, unit: years, source: judgement, status: judgement}
+  hay:
+    ceiling_share: {central: 0.03, low: 0.01, high: 0.06, unit: share of zone crop area, source: "Hay area is market-driven and volatile; requires existing contractor access", status: judgement}
+    years_to_peak: {central: 6, low: 5, high: 8, unit: years, source: judgement, status: judgement}
+    lag_years: {central: 1, low: 1, high: 2, unit: years, source: judgement, status: judgement}
+    disadoption_rate: {central: 0.08, low: 0.05, high: 0.10, unit: share per year after peak, source: judgement, status: judgement}
+    farm_share_converted: {central: 0.15, low: 0.10, high: 0.25, unit: share of farm crop area, source: judgement, status: judgement}
+    farm_ramp_years: {central: 1, low: 1, high: 2, unit: years, source: judgement, status: judgement}
+    extra_labour_hours_per_ha: {central: 0.0, low: 0.0, high: 0.2, unit: h/ha/yr, source: Contract hay making; only farms with access assumed to adopt, status: judgement}
+    learning_cost_per_ha: {central: 0, low: 0, high: 10, unit: $/ha/yr while learning, source: judgement, status: judgement}
+    learning_years: {central: 1, low: 1, high: 1, unit: years, source: judgement, status: judgement}
+  pasture:
+    ceiling_share: {central: 0.02, low: 0.0, high: 0.05, unit: share of zone crop area, source: "Trend is pasture to crop (PIRSA crop & pasture report 2023-24: lentils expanding at the expense of pasture); needs livestock or agistment market", status: snippet}
+    years_to_peak: {central: 12, low: 10, high: 15, unit: years, source: Raffeld et al. 2025, status: snippet}
+    lag_years: {central: 4, low: 3, high: 5, unit: years, source: judgement, status: judgement}
+    disadoption_rate: {central: 0.05, low: 0.03, high: 0.10, unit: share per year after peak, source: judgement, status: judgement}
+    farm_share_converted: {central: 0.20, low: 0.10, high: 0.33, unit: share of farm crop area, source: judgement, status: judgement}
+    farm_ramp_years: {central: 3, low: 2, high: 4, unit: years, source: judgement, status: judgement}
+    extra_labour_hours_per_ha: {central: 0.2, low: 0.1, high: 0.4, unit: h/ha/yr, source: Managing agistment (fencing/water checks); infrastructure assumed already present, status: judgement}
+    learning_cost_per_ha: {central: 10, low: 0, high: 25, unit: $/ha/yr while learning, source: judgement, status: judgement}
+    learning_years: {central: 1, low: 1, high: 2, unit: years, source: judgement, status: judgement}
+
+# Capital outlays - multicropping only. Contract grain cleaning ($25/t, MULTCROP_CLEANING_COST_PER_TONNE)
+# is already in the trial gross margins, so an on-farm cleaner is NOT added here (it would double count).
+multicrop_investment:
+  capital_items:
+    seeder_modification:
+      cost: {central: 15000, low: 5000, high: 40000, unit: $ per farm, source: "Second seed bin / split delivery for mixed sowing - no published Australian cost found; dealer quote needed", status: judgement}
+      life_years: {central: 10, low: 8, high: 15, unit: years, source: judgement, status: judgement}
+    segregated_storage:
+      cost: {central: 25000, low: 15000, high: 40000, unit: $ per farm, source: "Extra silo to hold mixed grain before contract cleaning - no published Australian cost found; quote needed", status: judgement}
+      life_years: {central: 25, low: 20, high: 30, unit: years, source: judgement, status: judgement}
+    harvest_setup:
+      cost: {central: 5000, low: 2000, high: 10000, unit: $ per farm, source: "Header settings/sieves/lifters for two crops - judgement", status: judgement}
+      life_years: {central: 10, low: 8, high: 15, unit: years, source: judgement, status: judgement}
+
+project:
+  research_cost_total:
+    central: 13700000
+    low: 13700000
+    high: 13700000
+    unit: $ (GRDC $7.6M + University of Adelaide $6.1M), treated as real
+    source: GRDC Groundcover announcement 2024 (farming systems project to inform decision making for southern growers)
+    status: snippet
+  first_investment_year: 2023
+  last_investment_year: 2027
+  adoption_start_year: 2028    # results released mid-2027; lag is added on top
+  probability_of_success:
+    central: 0.6
+    low: 0.5
+    high: 0.7
+    unit: probability the trials yield a robust, extendable recommendation
+    source: "Pannell 2024 (failure probabilities usually set too low); no published figure for farming-systems research"
+    status: judgement
+  attribution_share:
+    central: 0.35
+    low: 0.2
+    high: 0.5
+    unit: share of the adoption change credited to this project
+    source: "Several groups/programmes work on the same practices (BCG, Hart, MSF, SFS, other GRDC investments); NSW DPI ERR 19 credited 35% of conservation farming to DPI"
+    status: judgement
+  adoption_advance_years:
+    central: 3
+    low: 2
+    high: 5
+    unit: years earlier than without the project
+    source: "Marsh, Pannell & Lindner 2000 - extension moved adoption earlier but not the rate or ceiling (WA lupins)"
+    status: snippet
+  counterfactual_ceiling_share:
+    central: 1.0
+    low: 0.8
+    high: 1.0
+    unit: without-project ceiling as a share of the with-project ceiling
+    source: "Marsh, Pannell & Lindner 2000 (ceiling unchanged by extension); low case lets the project lift the ceiling 25%"
+    status: judgement
+
+risk:
+  wealth_per_ha:
+    central: 7000
+    low: 4000
+    high: 10000
+    unit: $ farm equity per crop ha (starting wealth for CRRA in SERF)
+    source: "ABARES benchmarks 2006-07 to 2008-09: equity A$1,683-2,765 per ha operated, equity ratio 85-89% (Hooper & Levantis 2011 via Greijdanus & Kragt 2014, UWA WP1400002), scaled for CPI and farmland value growth since; current zone figures not obtainable (ABARES blocked)"
+    status: judgement

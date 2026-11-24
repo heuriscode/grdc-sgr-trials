@@ -11,6 +11,7 @@ from src.analysis.gross_margin.grossmargin import getAnnualGrossMargin
 from src.analysis.gross_margin.grossmargin import getCropSequenceGrossMargin
 from src.analysis.gross_margin.grossmargin import getCropSequenceGrossMarginWithPrices
 from src.analysis.reporting.system_baseline_comparisons import gen_system_baseline_comparison_results
+from src.analysis.investment import run_investment_analysis
 
 # To do:
 #from src.basic_data_processing.final_processing.remote_sense_data import integrateRemoteSenseData
@@ -45,7 +46,18 @@ getCropSequenceGrossMargin()
 # writes to '.../data/outputs/gross_margins/<date>_priced/'
 getCropSequenceGrossMarginWithPrices()
 
+# investment (benefit-cost) analysis of each system for a cropping farmer, by zone, plus the
+# industry and project-level analysis. Reads the newest gross-margin output (prefers the
+# '_priced' folder, which carries urea quantities). Assumptions (all cited):
+# data/reference_data/investment_assumptions.yaml. Writes to data/outputs/investment/<date>/
+# (git-ignored). Options: see src/analysis/investment/README.md, e.g.
+#   run_investment_analysis(baseline_rule={'HART': 'Baseline (SDP N)'}, input_shock=True)
+run_investment_analysis()
+
 # calculate and generate comparisons of gms between systems and baselines for reporting
+# NOTE: this function does not run as written (undefined variable, wrong column name,
+# DataFrame.append removed in pandas 2). The investment analysis writes a replacement:
+# trial_evidence_gain_vs_baseline.csv (bootstrap over years and replicates, by zone).
 gen_system_baseline_comparison_results()
 
 

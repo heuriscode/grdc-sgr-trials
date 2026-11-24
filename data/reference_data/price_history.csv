@@ -1,0 +1,319 @@
+year,commodity,price_nominal_aud_t,source
+1995,barley,213.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1996,barley,219.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1997,barley,195.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1998,barley,159.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1999,barley,140.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2000,barley,172.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2001,barley,199.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2002,barley,208.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2003,barley,255.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2004,barley,169.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2005,barley,159.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2006,barley,149.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2007,barley,244.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2008,barley,313.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2009,barley,231.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2010,barley,172.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2011,barley,216.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2012,barley,210.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2013,barley,276.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2014,barley,267.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2015,barley,280.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2016,barley,253.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2017,barley,197.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2018,barley,246.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2019,barley,342.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2020,barley,296.9,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2021,barley,254.5,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2022,barley,303.1,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2023,barley,277.7,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2023,barley,277.7,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2024,barley,289.0,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2024,barley,289.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2025,barley,267.5,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+1995,canola,366.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1996,canola,373.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1997,canola,383.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1998,canola,386.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1999,canola,381.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2000,canola,309.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2001,canola,307.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2002,canola,384.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2003,canola,446.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2004,canola,403.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2005,canola,326.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2006,canola,334.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2007,canola,396.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2008,canola,542.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2009,canola,548.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2010,canola,440.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2011,canola,544.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2012,canola,513.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2015,canola,503.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2016,canola,532.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2017,canola,559.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2018,canola,539.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2019,canola,574.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2020,canola,596.5,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2021,canola,616.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2022,canola,880.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2023,canola,740.0,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2023,canola,740.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2024,canola,597.4,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2024,canola,597.4,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2025,canola,713.8,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+1995,chickpea,496.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1996,chickpea,365.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1997,chickpea,277.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1998,chickpea,375.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1999,chickpea,383.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2000,chickpea,339.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2001,chickpea,463.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2002,chickpea,476.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2003,chickpea,486.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2004,chickpea,309.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2005,chickpea,267.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2006,chickpea,374.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2007,chickpea,598.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2009,chickpea,450.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2010,chickpea,432.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2011,chickpea,404.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2012,chickpea,457.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2016,chickpea,784.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2017,chickpea,557.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2018,chickpea,464.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2019,chickpea,522.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2020,chickpea,760.8,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2020,chickpea,760.8,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2021,chickpea,593.0,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2021,chickpea,593.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2023,chickpea,507.3,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2023,chickpea,507.3,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2024,chickpea,733.4,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2024,chickpea,733.4,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2025,chickpea,850.1,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+1995,diesel,23.04,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+1996,diesel,26.38,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+1997,diesel,25.67,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+1998,diesel,20.21,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+1999,diesel,27.59,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2000,diesel,48.62,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2001,diesel,47.24,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2002,diesel,45.92,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2003,diesel,44.23,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2004,diesel,52.01,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2005,diesel,71.37,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2006,diesel,86.79,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2007,diesel,86.63,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2008,diesel,114.37,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2009,diesel,78.04,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2010,diesel,86.56,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2011,diesel,107.37,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2012,diesel,108.09,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2013,diesel,112.42,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2014,diesel,109.52,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2015,diesel,69.62,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2016,diesel,59.17,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2017,diesel,70.91,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2018,diesel,95.0,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2019,diesel,92.1,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2020,diesel,61.31,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2021,diesel,93.74,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2022,diesel,143.61,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2023,diesel,124.35,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2024,diesel,122.33,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+2025,diesel,107.03,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only (Brent A$/bbl as diesel proxy)
+1995,faba bean,282.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1996,faba bean,284.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1997,faba bean,257.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1998,faba bean,260.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1999,faba bean,241.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2000,faba bean,257.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2001,faba bean,291.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2002,faba bean,280.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2003,faba bean,327.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2004,faba bean,244.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2005,faba bean,286.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2007,faba bean,295.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2011,faba bean,309.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2020,faba bean,507.7,"ABS VACP gross value / ABS 7121 production, other pulses proxy"
+2021,faba bean,511.4,"ABS VACP gross value / ABS 7121 production, other pulses proxy"
+2025,faba bean,526.8,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+1995,field pea,265.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1996,field pea,248.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1997,field pea,244.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1998,field pea,272.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1999,field pea,246.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2000,field pea,214.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2001,field pea,219.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2002,field pea,287.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2003,field pea,343.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2004,field pea,231.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2005,field pea,234.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2006,field pea,222.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2007,field pea,283.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2009,field pea,345.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2011,field pea,266.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2020,field pea,507.7,"ABS VACP gross value / ABS 7121 production, other pulses proxy"
+2021,field pea,511.4,"ABS VACP gross value / ABS 7121 production, other pulses proxy"
+2025,field pea,535.6,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+1997,lentil,438.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1998,lentil,499.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1999,lentil,467.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2000,lentil,467.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2001,lentil,455.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2002,lentil,446.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2003,lentil,510.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2004,lentil,365.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2005,lentil,495.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2006,lentil,433.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2007,lentil,520.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2009,lentil,1038.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2011,lentil,672.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2016,lentil,1169.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2021,lentil,707.6,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2021,lentil,707.6,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2023,lentil,738.1,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2023,lentil,738.1,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2024,lentil,845.3,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2024,lentil,845.3,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2025,lentil,845.3,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+1995,lupin,185.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1996,lupin,179.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1997,lupin,206.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1998,lupin,196.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1999,lupin,143.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2000,lupin,145.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2001,lupin,205.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2002,lupin,250.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2003,lupin,291.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2004,lupin,236.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2005,lupin,206.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2006,lupin,195.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2007,lupin,265.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2008,lupin,335.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2009,lupin,280.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2010,lupin,249.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2011,lupin,268.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2012,lupin,232.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2016,lupin,362.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2021,lupin,402.1,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2021,lupin,402.1,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2023,lupin,282.6,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2023,lupin,282.6,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2024,lupin,368.8,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2024,lupin,368.8,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2025,lupin,440.0,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+1995,oats,179.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1996,oats,154.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1997,oats,137.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1998,oats,137.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1999,oats,87.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2000,oats,106.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2001,oats,132.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2002,oats,175.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2003,oats,219.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2004,oats,138.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2005,oats,134.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2006,oats,147.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2007,oats,241.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2008,oats,281.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2009,oats,216.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2010,oats,160.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2011,oats,196.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2012,oats,202.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2013,oats,236.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2014,oats,213.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2015,oats,250.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2016,oats,306.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2017,oats,242.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2018,oats,222.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2019,oats,367.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2020,oats,371.7,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2021,oats,285.3,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2022,oats,299.1,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2023,oats,261.9,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2023,oats,261.9,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2024,oats,363.2,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2024,oats,363.2,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2025,oats,376.3,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+1995,urea,171.3,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+1996,urea,196.3,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+1997,urea,158.0,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+1998,urea,132.3,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+1999,urea,102.2,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2000,urea,173.6,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2001,urea,186.6,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2002,urea,173.7,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2003,urea,211.8,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2004,urea,237.5,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2005,urea,285.0,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2006,urea,294.8,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2007,urea,366.0,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2008,urea,603.2,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2009,urea,316.8,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2010,urea,314.0,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2011,urea,386.1,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2012,urea,384.8,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2013,urea,350.7,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2014,urea,341.4,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2015,urea,369.5,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2016,urea,260.8,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2017,urea,278.8,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2018,urea,333.4,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2019,urea,352.8,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2020,urea,332.1,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2021,urea,643.0,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2022,urea,1007.0,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2023,urea,538.8,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2024,urea,512.8,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+2025,urea,655.3,World Bank Pink Sheet (urea Middle East fob; Brent) in AUD via FRED DEXUSAL - relative movements only
+1995,vetch,440.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1996,vetch,450.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1997,vetch,290.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1998,vetch,340.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1999,vetch,260.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2000,vetch,250.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2001,vetch,370.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2002,vetch,300.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2003,vetch,400.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2004,vetch,342.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2005,vetch,383.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2006,vetch,230.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2007,vetch,410.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2009,vetch,420.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2011,vetch,330.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1995,wheat,237.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1996,wheat,260.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1997,wheat,212.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1998,wheat,198.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+1999,wheat,187.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2000,wheat,195.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2001,wheat,232.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2002,wheat,262.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2003,wheat,266.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2004,wheat,216.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2005,wheat,197.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2006,wheat,203.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2007,wheat,242.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2008,wheat,390.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2009,wheat,281.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2010,wheat,218.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2011,wheat,257.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2012,wheat,227.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2013,wheat,313.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2014,wheat,316.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2015,wheat,300.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2016,wheat,277.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2017,wheat,231.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2018,wheat,272.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2019,wheat,352.0,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2020,wheat,341.7,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2021,wheat,308.6,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2022,wheat,362.7,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2023,wheat,328.5,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2023,wheat,328.5,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2024,wheat,315.1,ABS Australian Agriculture: Broadacre Crops (local value / levied production)
+2024,wheat,315.1,"FAOSTAT Producer Prices, Australia (ABS-derived unit values), accessed 2026-11-24"
+2025,wheat,291.2,ABS Australian Agriculture: Broadacre Crops (local value / levied production)

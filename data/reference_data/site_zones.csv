@@ -1,0 +1,10 @@
+site,zone,zone_name,state,basis,confidence,annual_rain_mm,gsr_apr_oct_mm,rain_source
+APPILA,SA_MNLYE,SA Midnorth-Lower Yorke Eyre,SA,Upper North near Laura/Booleroo Centre; low-rainfall northern margin of zone,medium,347,236,NASA POWER gridded 1991-2020 (indicative; verify BoM)
+EDILLILIE,SA_MNLYE,SA Midnorth-Lower Yorke Eyre,SA,Lower Eyre Peninsula (lower EP is in the Lower Yorke Eyre zone),high,393,305,NASA POWER gridded 1991-2020 (likely understated)
+HART,SA_MNLYE,SA Midnorth-Lower Yorke Eyre,SA,Mid North near Blyth,high,384,285,NASA POWER gridded 1991-2020
+ROSEWORTHY,SA_MNLYE,SA Midnorth-Lower Yorke Eyre,SA,Lower North near Gawler,high,430,322,NASA POWER gridded 1991-2020
+KINNABULLA,SAV_MALLEE,SA Vic Mallee,VIC,Southern Victorian Mallee (Birchip-Sea Lake),high,365,237,NASA POWER gridded 1991-2020
+MANANG,SAV_MALLEE,SA Vic Mallee,VIC,Manangatang - northern Victorian Mallee,high,311,178,NASA POWER gridded 1991-2020
+WALLUP,SAV_BW,SA Vic Bordertown-Wimmera,VIC,Wimmera NW of Horsham,high,433,294,NASA POWER gridded 1991-2020
+STREATHAM,VIC_HRZ,Vic High Rainfall,VIC,Western District (Skipton-Lake Bolac),medium-high,597,401,NASA POWER gridded 1991-2020
+WARRAMBINE,VIC_HRZ,Vic High Rainfall,VIC,Golden Plains near Shelford,high,648,422,NASA POWER gridded 1991-2020 (likely overstated)
