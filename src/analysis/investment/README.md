@@ -49,6 +49,13 @@ It is for comparison only. Two functions run it:
 - `run_convention_comparison()` runs the full analysis on this basis, with no shrinkage, no confidence weighting and each zone's best trial site.
 - `convention_variant_table()` writes the realistic case plus variants A–D to `convention_comparison.csv`.
 
+### Comparison tables (`run_comparisons()`, called from `head.py`)
+
+Both tables are written to `data/outputs/investment/<date>/comparisons/`:
+
+- **`adoption_sensitivity.csv`** (`adoption_sensitivity_table()`): the central case alongside lower adoption, where 15% or 10% of zone crop area changes system, and slower adoption (years to peak ×1.5, lag +2 years), separately and combined. It reuses the central run's gains and adoption gate.
+- **`convention_comparison.csv`** (`convention_variant_table()`): the realistic case against RDC-convention variants A–D.
+
 ## Choices you can make
 
 | Option | Default | Meaning |

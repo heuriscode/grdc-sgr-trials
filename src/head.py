@@ -11,7 +11,7 @@ from src.analysis.gross_margin.grossmargin import getAnnualGrossMargin
 from src.analysis.gross_margin.grossmargin import getCropSequenceGrossMargin
 from src.analysis.gross_margin.grossmargin import getCropSequenceGrossMarginWithPrices
 from src.analysis.reporting.system_baseline_comparisons import gen_system_baseline_comparison_results
-from src.analysis.investment import run_investment_analysis
+from src.analysis.investment import run_comparisons, run_investment_analysis
 
 # To do:
 #from src.basic_data_processing.final_processing.remote_sense_data import integrateRemoteSenseData
@@ -53,6 +53,10 @@ getCropSequenceGrossMarginWithPrices()
 # (git-ignored). Options: see src/analysis/investment/README.md, e.g.
 #   run_investment_analysis(baseline_rule={'HART': 'Baseline (SDP N)'}, input_shock=True)
 run_investment_analysis()
+
+# comparison tables: lower (15%, 10%) and slower adoption; and the same project under the
+# assumptions common in published RDC impact assessments (comparison only, not our view)
+run_comparisons()
 
 # calculate and generate comparisons of gms between systems and baselines for reporting
 # NOTE: this function does not run as written (undefined variable, wrong column name,

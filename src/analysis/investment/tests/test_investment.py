@@ -231,3 +231,13 @@ def test_mirr_and_sign_changes():
     m = mirr_vectorised(cash, 0.05)[0]
     assert m == pytest.approx(((60 * 1.05 + 60) / 100) ** 0.5 - 1, rel=1e-9)
     assert list(sign_changes(np.array([[-1, 2, 3, -1.0], [-1, 1, 1, 1.0]]))) == [2, 1]
+
+
+@pytest.mark.skipif(not REPO_FILES, reason="run from the repo root")
+def test_lower_and_slower_adoption_reduce_benefits():
+    from src.analysis.investment.run import adoption_sensitivity_table
+
+    t = adoption_sensitivity_table(n_farm_iterations=30, n_bootstrap=60, n_industry_draws=300).set_index("case")
+    b = t["pv_project_benefit_mean"]
+    assert b["Lower: pool 10%"] < b["Lower: pool 15%"] < b["Central (pool 20% of zone crop area)"]
+    assert b["Slower: years to peak x1.5, lag +2 years"] < b["Central (pool 20% of zone crop area)"]

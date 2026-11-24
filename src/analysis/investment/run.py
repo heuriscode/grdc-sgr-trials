@@ -300,6 +300,71 @@ def convention_variant_table(output_dir: str | None = None, best_results: bool =
     return df
 
 
+ADOPTION_CLASSES = ("rotation", "responsive", "cover_crop", "multicrop", "hay", "pasture")
+
+
+def _slower(a: Assumptions, factor: float, extra_lag: float) -> Assumptions:
+    """Every class: years to peak x factor and lag + extra_lag (ranges scaled, then fixed at central)."""
+    for cls in ADOPTION_CLASSES:
+        ytp = a.get(f"adoption.{cls}.years_to_peak")
+        lag = a.get(f"adoption.{cls}.lag_years")
+        a = _fix_param(a, f"adoption.{cls}.years_to_peak", ytp * factor)
+        a = _fix_param(a, f"adoption.{cls}.lag_years", lag + extra_lag)
+    return a
+
+
+ADOPTION_SENSITIVITY = [
+    ("Central (pool 20% of zone crop area)", {}, None),
+    ("Lower: pool 15%", {"adoption.joint_cap_share": 0.15}, None),
+    ("Lower: pool 10%", {"adoption.joint_cap_share": 0.10}, None),
+    ("Slower: years to peak x1.5, lag +2 years", {}, (1.5, 2)),
+    ("Lower and slower: pool 15%, slower", {"adoption.joint_cap_share": 0.15}, (1.5, 2)),
+    ("Lower and slower: pool 10%, slower", {"adoption.joint_cap_share": 0.10}, (1.5, 2)),
+]
+
+
+def adoption_sensitivity_table(output_dir: str | None = None, base: dict | None = None, **kwargs) -> pd.DataFrame:
+    """Project BCR with lower (15%, 10% of zone crop area) and slower adoption.
+
+    Uses the central run's gross-margin results and adoption gate (common random numbers),
+    so only adoption changes between rows.
+    """
+    opts = RunOptions(**{"run_serf": False, **kwargs})
+    a0 = Assumptions.load(opts.assumptions_file, opts.profile)
+    if base is None:
+        td = build_trial_data(load_gross_margins(opts.gm_file), revenue_basis=opts.revenue_basis)
+        base = _core(td, a0, opts, np.random.default_rng(opts.seed), load_site_zones(), with_risk=False)
+    rows = []
+    for label, fixes, slow in ADOPTION_SENSITIVITY:
+        a = a0
+        for k, v in fixes.items():
+            a = _fix_param(a, k, v)
+        if slow:
+            a = _slower(a, *slow)
+        ind = industry_analysis(a, base["zone_deltas"], base["farm_gate"], opts.n_industry_draws,
+                                np.random.default_rng(opts.seed + 1), opts.scenario,
+                                confidence=base["confidence"], evidence_weighting=opts.evidence_weighting,
+                                reallocate=opts.reallocate_adoption, cap_at_class_high=opts.cap_at_class_high)
+        rows.append({"case": label, **ind["project"]})
+    df = pd.DataFrame(rows)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
+        df.to_csv(os.path.join(output_dir, "adoption_sensitivity.csv"), index=False)
+    return df
+
+
+def run_comparisons(output_dir: str | None = None, **kwargs) -> dict:
+    """All comparison tables in one call (for head.py):
+
+    - adoption_sensitivity.csv: lower (15%, 10%) and slower adoption
+    - convention_comparison.csv: realistic case vs RDC impact-assessment conventions A-D
+    """
+    out = output_dir or os.path.join(get_outputs_path(), "investment",
+                                     datetime.datetime.now().strftime("%d_%m_%Y"), "comparisons")
+    return {"adoption_sensitivity": adoption_sensitivity_table(out, **kwargs),
+            "convention_comparison": convention_variant_table(out, **kwargs)}
+
+
 def run_investment_analysis(options: RunOptions | None = None, **kwargs) -> dict:
     """Run the analysis end-to-end and write csv outputs and charts. Returns the results."""
     opts = options or RunOptions(**kwargs)
